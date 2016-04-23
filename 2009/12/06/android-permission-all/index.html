@@ -1,0 +1,570 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android permission 访问权限大全 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="程序执行需要读取到安全敏感项必需在androidmanifest.xml中声明相关权限请求, 完整列表如下:
+android.permission.ACCESS_CHECKIN_PROPERTIES允许读写访问”properties”表在checkin数据库中，改值可以修改上传( Allows read/write access to the “properties” table in the c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android permission 访问权限大全">
+<meta property="og:url" content="http://www.liulang.cq.cn/2009/12/06/android-permission-all/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="程序执行需要读取到安全敏感项必需在androidmanifest.xml中声明相关权限请求, 完整列表如下:
+android.permission.ACCESS_CHECKIN_PROPERTIES允许读写访问”properties”表在checkin数据库中，改值可以修改上传( Allows read/write access to the “properties” table in the c">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android permission 访问权限大全">
+<meta name="twitter:description" content="程序执行需要读取到安全敏感项必需在androidmanifest.xml中声明相关权限请求, 完整列表如下:
+android.permission.ACCESS_CHECKIN_PROPERTIES允许读写访问”properties”表在checkin数据库中，改值可以修改上传( Allows read/write access to the “properties” table in the c">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2009/12/06/android-permission-all/" title="Android permission 访问权限大全" itemprop="url">Android permission 访问权限大全</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2009-12-06T15:26:09.000Z" itemprop="datePublished"> 发表于 2009-12-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>程序执行需要读取到安全敏感项必需在androidmanifest.xml中声明相关权限请求, 完整列表如下:</p>
+<p>android.permission.ACCESS_CHECKIN_PROPERTIES<br>允许读写访问”properties”表在checkin数据库中，改值可以修改上传( Allows read/write access to the “properties” table in the checkin database, to change values that get uploaded)<a id="more"></a></p>
+<p>android.permission.ACCESS_COARSE_LOCATION<br>允许一个程序访问CellID或WiFi热点来获取粗略的位置(Allows an application to access coarse (e.g., Cell-ID, WiFi) location)</p>
+<p>android.permission.ACCESS_FINE_LOCATION<br>允许一个程序访问精良位置(如GPS) (Allows an application to access fine (e.g., GPS) location)</p>
+<p>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS<br>允许应用程序访问额外的位置提供命令(Allows an application to access extra location provider commands)</p>
+<p>android.permission.ACCESS_MOCK_LOCATION<br>允许程序创建模拟位置提供用于测试(Allows an application to create mock location providers for testing)</p>
+<p>android.permission.ACCESS_NETWORK_STATE<br>允许程序访问有关GSM网络信息(Allows applications to access information about networks)</p>
+<p>android.permission.ACCESS_SURFACE_FLINGER<br>允许程序使用SurfaceFlinger底层特性(Allows an application to use SurfaceFlinger’s low level features)</p>
+<p>android.permission.ACCESS_WIFI_STATE<br>允许程序访问Wi-Fi网络状态信息(Allows applications to access information about Wi-Fi networks)</p>
+<p>android.permission.ADD_SYSTEM_SERVICE<br>允许程序发布系统级服务(Allows an application to publish system-level services).</p>
+<p>android.permission.BATTERY_STATS<br>允许程序更新手机电池统计信息(Allows an application to update the collected battery statistics)</p>
+<p>android.permission.BLUETOOTH<br>允许程序连接到已配对的蓝牙设备(Allows applications to connect to paired bluetooth devices)</p>
+<p>android.permission.BLUETOOTH_ADMIN<br>允许程序发现和配对蓝牙设备(Allows applications to discover and pair bluetooth devices)</p>
+<p>android.permission.BRICK<br>请求能够禁用设备(非常危险)(Required to be able to disable the device (very *erous!).)</p>
+<p>android.permission.BROADCAST_PACKAGE_REMOVED<br>允许程序广播一个提示消息在一个应用程序包已经移除后(Allows an application to broadcast a notification that an application package has been removed)</p>
+<p>android.permission.BROADCAST_STICKY<br>允许一个程序广播常用intents(Allows an application to broadcast sticky intents)</p>
+<p>android.permission.CALL_PHONE<br>允许一个程序初始化一个电话拨号不需通过拨号用户界面需要用户确认(Allows an application to initiate a phone call without going through the Dialer user interface for the user to confirm the call being placed.)</p>
+<p>android.permission.CALL_PRIVILEGED<br>允许一个程序拨打任何号码，包含紧急号码无需通过拨号用户界面需要用户确认(Allows an application to call any phone number, including emergency numbers, without going through the Dialer user interface for the user to confirm the call being placed)</p>
+<p>android.permission.CAMERA<br>请求访问使用照相设备(Required to be able to access the camera device. )</p>
+<p>android.permission.CHANGE_COMPONENT_ENABLED_STATE<br>允许一个程序是否改变一个组件或其他的启用或禁用(Allows an application to change whether an application component (other than its own) is enabled or not. )</p>
+<p>android.permission.CHANGE_CONFIGURATION<br>允许一个程序修改当前设置，如本地化(Allows an application to modify the current configuration, such as locale. )</p>
+<p>android.permission.CHANGE_NETWORK_STATE<br>允许程序改变网络连接状态(Allows applications to change network connectivity state)</p>
+<p>android.permission.CHANGE_WIFI_STATE<br>允许程序改变Wi-Fi连接状态(Allows applications to change Wi-Fi connectivity state)</p>
+<p>android.permission.CLEAR_APP_CACHE<br>允许一个程序清楚缓存从所有安装的程序在设备中(Allows an application to clear the caches of all installed applications on the device. )</p>
+<p>android.permission.CLEAR_APP_USER_DATA<br>允许一个程序清除用户设置(Allows an application to clear user data)</p>
+<p>android.permission.CONTROL_LOCATION_UPDATES<br>允许启用禁止位置更新提示从无线模块(Allows enabling/disabling location update notifications from the radio. )</p>
+<p>android.permission.DELETE_CACHE_FILES<br>允许程序删除缓存文件(Allows an application to delete cache files)</p>
+<p>android.permission.DELETE_PACKAGES<br>允许一个程序删除包(Allows an application to delete packages)</p>
+<p>android.permission.DEVICE_POWER<br>允许访问底层电源管理(Allows low-level access to power management)</p>
+<p>android.permission.DIAGNOSTIC<br>允许程序RW诊断资源(Allows applications to RW to diagnostic resources. )</p>
+<p>android.permission.DISABLE_KEYGUARD<br>允许程序禁用键盘锁(Allows applications to disable the keyguard )</p>
+<p>android.permission.DUMP<br>允许程序返回状态抓取信息从系统服务(Allows an application to retrieve state dump information from system services.)</p>
+<p>android.permission.EXPAND_STATUS_BAR<br>允许一个程序扩展收缩在状态栏,android开发网提示应该是一个类似Windows Mobile中的托盘程序(Allows an application to expand or collapse the status bar. )</p>
+<p>android.permission.FACTORY_TEST<br>作为一个工厂测试程序，运行在root用户(Run as a manufacturer test application, running as the root user. )</p>
+<p>android.permission.FLASHLIGHT<br>访问闪光灯,android开发网提示HTC Dream不包含闪光灯(Allows access to the flashlight )</p>
+<p>android.permission.FORCE_BACK<br>允许程序强行一个后退操作是否在顶层activities(Allows an application to force a BACK operation on whatever is the top activity. )</p>
+<p>android.permission.FOTA_UPDATE<br>暂时不了解这是做什么使用的，android开发网分析可能是一个预留权限.</p>
+<p>android.permission.GET_ACCOUNTS<br>访问一个帐户列表在Accounts Service中(Allows access to the list of accounts in the Accounts Service)</p>
+<p>android.permission.GET_PACKAGE_SIZE<br>允许一个程序获取任何package占用空间容量(Allows an application to find out the space used by any package. )</p>
+<p>android.permission.GET_TASKS<br>允许一个程序获取信息有关当前或最近运行的任务，一个缩略的任务状态，是否活动等等(Allows an application to get information about the currently or recently running tasks: a thumbnail representation of the tasks, what activities are running in it, etc.)</p>
+<p>android.permission.HARDWARE_TEST<br>允许访问硬件(Allows access to hardware peripherals. )</p>
+<p>android.permission.INJECT_EVENTS<br>允许一个程序截获用户事件如按键、触摸、轨迹球等等到一个时间流，android 开发网提醒算是hook技术吧(Allows an application to inject user events (keys, touch, trackball) into the event stream and deliver them to ANY window.)</p>
+<p>android.permission.INSTALL_PACKAGES<br>允许一个程序安装packages(Allows an application to install packages. )</p>
+<p>android.permission.INTERNAL_SYSTEM_WINDOW<br>允许打开窗口使用系统用户界面(Allows an application to open windows that are for use by parts of the system user interface. )</p>
+<p>android.permission.INTERNET<br>允许程序打开网络套接字(Allows applications to open network sockets)</p>
+<p>android.permission.MANAGE_APP_TOKENS<br>允许程序管理(创建、催后、 z- order默认向z轴推移)程序引用在窗口管理器中(Allows an application to manage (create, destroy, Z-order) application tokens in the window manager. )</p>
+<p>android.permission.MASTER_CLEAR目前还没有明确的解释，android开发网分析可能是清除一切数据，类似硬格机</p>
+<p>android.permission.MODIFY_AUDIO_SETTINGS<br>允许程序修改全局音频设置(Allows an application to modify global audio settings)</p>
+<p>android.permission.MODIFY_PHONE_STATE<br>允许修改话机状态，如电源，人机接口等(Allows modification of the telephony state – power on, mmi, etc. )</p>
+<p>android.permission.MOUNT_UNMOUNT_FILESYSTEMS<br>允许挂载和反挂载文件系统可移动存储(Allows mounting and unmounting file systems for removable storage. )</p>
+<p>android.permission.PERSISTENT_ACTIVITY<br>允许一个程序设置他的activities显示(Allow an application to make its activities persistent. )</p>
+<p>android.permission.PROCESS_OUTGOING_CALLS<br>允许程序监视、修改有关播出电话(Allows an application to monitor, modify, or abort outgoing calls)</p>
+<p>android.permission.READ_CALENDAR<br>允许程序读取用户日历数据(Allows an application to read the user’s calendar data.)</p>
+<p>android.permission.READ_CONTACTS<br>允许程序读取用户联系人数据(Allows an application to read the user’s contacts data.)</p>
+<p>android.permission.READ_FRAME_BUFFER<br>允许程序屏幕波或和更多常规的访问帧缓冲数据(Allows an application to take screen shots and more generally get access to the frame buffer data)</p>
+<p>android.permission.READ_INPUT_STATE<br>允许程序返回当前按键状态(Allows an application to retrieve the current state of keys and switches. )</p>
+<p>android.permission.READ_LOGS<br>允许程序读取底层系统日志文件(Allows an application to read the low-level system log files. )</p>
+<p>android.permission.READ_OWNER_DATA<br>允许程序读取所有者数据(Allows an application to read the owner’s data)</p>
+<p>android.permission.READ_SMS<br>允许程序读取短信息(Allows an application to read SMS messages.)</p>
+<p>android.permission.READ_SYNC_SETTINGS<br>允许程序读取同步设置(Allows applications to read the sync settings)</p>
+<p>android.permission.READ_SYNC_STATS<br>允许程序读取同步状态(Allows applications to read the sync stats)</p>
+<p>android.permission.REBOOT<br>请求能够重新启动设备(Required to be able to reboot the device. )</p>
+<p>android.permission.RECEIVE_BOOT_COMPLETED<br>允许一个程序接收到 ACTION_BOOT_COMPLETED广播在系统完成启动(Allows an application to receive the ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting. )</p>
+<p>android.permission.RECEIVE_MMS<br>允许一个程序监控将收到MMS彩信,记录或处理(Allows an application to monitor incoming MMS messages, to record or perform processing on them. )</p>
+<p>android.permission.RECEIVE_SMS<br>允许程序监控一个将收到短信息，记录或处理(Allows an application to monitor incoming SMS messages, to record or perform processing on them.)</p>
+<p>android.permission.RECEIVE_WAP_PUSH<br>允许程序监控将收到WAP PUSH信息(Allows an application to monitor incoming WAP push messages. )</p>
+<p>android.permission.RECORD_AUDIO<br>允许程序录制音频(Allows an application to record audio)</p>
+<p>android.permission.REORDER_TASKS<br>允许程序改变Z轴排列任务(Allows an application to change the Z-order of tasks)</p>
+<p>android.permission.RESTART_PACKAGES<br>允许程序重新启动其他程序(Allows an application to restart other applications)</p>
+<p>android.permission.SEND_SMS<br>允许程序发送SMS短信(Allows an application to send SMS messages)</p>
+<p>android.permission.SET_ACTIVITY_WATCHER<br>允许程序监控或控制activities已经启动全局系统中Allows an application to watch and control how activities are started globally in the system.</p>
+<p>android.permission.SET_ALWAYS_FINISH<br>允许程序控制是否活动间接完成在处于后台时Allows an application to control whether activities are immediately finished when put in the background.</p>
+<p>android.permission.SET_ANIMATION_SCALE<br>修改全局信息比例(Modify the global animation scaling factor.)</p>
+<p>android.permission.SET_DEBUG_APP<br>配置一个程序用于调试(Configure an application for debugging.)</p>
+<p>android.permission.SET_ORIENTATION<br>允许底层访问设置屏幕方向和实际旋转(Allows low-level access to setting the orientation (actually rotation) of the screen.)</p>
+<p>android.permission.SET_PREFERRED_APPLICATIONS<br>允许一个程序修改列表参数PackageManager.addPackageToPreferred() 和PackageManager.removePackageFromPreferred()方法(Allows an application to modify the list of preferred applications with the PackageManager.addPackageToPreferred() and PackageManager.removePackageFromPreferred() methods.)</p>
+<p>android.permission.SET_PROCESS_FOREGROUND<br>允许程序当前运行程序强行到前台(Allows an application to force any currently running process to be in the foreground.)</p>
+<p>android.permission.SET_PROCESS_LIMIT<br>允许设置最大的运行进程数量(Allows an application to set the maximum number of (not needed) application processes that can be running. )</p>
+<p>android.permission.SET_TIME_ZONE<br>允许程序设置时间区域(Allows applications to set the system time zone)</p>
+<p>android.permission.SET_WALLPAPER<br>允许程序设置壁纸(Allows applications to set the wallpaper )</p>
+<p>android.permission.SET_WALLPAPER_HINTS<br>允许程序设置壁纸hits(Allows applications to set the wallpaper hints)</p>
+<p>android.permission.SIGNAL_PERSISTENT_PROCESSES<br>允许程序请求发送信号到所有显示的进程中(Allow an application to request that a signal be sent to all persistent processes)</p>
+<p>android.permission.STATUS_BAR<br>允许程序打开、关闭或禁用状态栏及图标Allows an application to open, close, or disable the status bar and its icons.</p>
+<p>android.permission.SUBSCRIBED_FEEDS_READ<br>允许一个程序访问订阅RSS Feed内容提供(Allows an application to allow access the subscribed feeds ContentProvider. )</p>
+<p>android.permission.SUBSCRIBED_FEEDS_WRITE<br>系统暂时保留改设置,android开发网认为未来版本会加入该功能。</p>
+<p>android.permission.SYSTEM_ALERT_WINDOW<br>允许一个程序打开窗口使用 TYPE_SYSTEM_ALERT，显示在其他所有程序的顶层(Allows an application to open windows using the type TYPE_SYSTEM_ALERT, shown on top of all other applications. )</p>
+<p>android.permission.VIBRATE<br>允许访问振动设备(Allows access to the vibrator)</p>
+<p>android.permission.WAKE_LOCK<br>允许使用PowerManager的 WakeLocks保持进程在休眠时从屏幕消失( Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming)</p>
+<p>android.permission.WRITE_APN_SETTINGS<br>允许程序写入API设置(Allows applications to write the apn settings)</p>
+<p>android.permission.WRITE_CALENDAR<br>允许一个程序写入但不读取用户日历数据(Allows an application to write (but not read) the user’s calendar data. )</p>
+<p>android.permission.WRITE_CONTACTS<br>允许程序写入但不读取用户联系人数据(Allows an application to write (but not read) the user’s contacts data. )</p>
+<p>android.permission.WRITE_GSERVICES<br>允许程序修改Google服务地图(Allows an application to modify the Google service map. )</p>
+<p>android.permission.WRITE_OWNER_DATA<br>允许一个程序写入但不读取所有者数据(Allows an application to write (but not read) the owner’s data.)</p>
+<p>android.permission.WRITE_SETTINGS<br>允许程序读取或写入系统设置(Allows an application to read or write the system settings. )</p>
+<p>android.permission.WRITE_SMS<br>允许程序写短信(Allows an application to write SMS messages)</p>
+<p>android.permission.WRITE_SYNC_SETTINGS<br>允许程序写入同步设置(Allows applications to write the sync settings)</p>
+<p>android平台上的权限许可分得很细，如果软件无法正常执行时看看是不是缺少相关的permission声明，最终我们还需要使用 android sign tools签名生成的apk文件。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动开发/">移动开发</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2009/12/06/android-permission-all/" data-title="Android permission 访问权限大全 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2010/03/03/dalvik-ten/" title="Dalvik 十件事">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Dalvik 十件事</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2009/11/10/javaexceptionanalyze/"  title="Java异常分析">
+ <strong>下一篇：</strong><br/> 
+ <span>Java异常分析
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

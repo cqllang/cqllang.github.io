@@ -1,0 +1,500 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>java util常用数据类型 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="java.util就相当于c++的STL，是Java的一个非常重要的包，有很多常用的数据类型，不同数据类型有不同的用途，而有些数据类似乎很相似，怎样选择应用，就需要对它们进行辨析。下面列出了这些数据类型的特点，根据这些特点，就可以有针对性的选用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java util常用数据类型">
+<meta property="og:url" content="http://www.liulang.cq.cn/2009/08/02/javautildatatype/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="java.util就相当于c++的STL，是Java的一个非常重要的包，有很多常用的数据类型，不同数据类型有不同的用途，而有些数据类似乎很相似，怎样选择应用，就需要对它们进行辨析。下面列出了这些数据类型的特点，根据这些特点，就可以有针对性的选用">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java util常用数据类型">
+<meta name="twitter:description" content="java.util就相当于c++的STL，是Java的一个非常重要的包，有很多常用的数据类型，不同数据类型有不同的用途，而有些数据类似乎很相似，怎样选择应用，就需要对它们进行辨析。下面列出了这些数据类型的特点，根据这些特点，就可以有针对性的选用">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2009/08/02/javautildatatype/" title="java util常用数据类型" itemprop="url">java util常用数据类型</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2009-08-02T09:28:06.000Z" itemprop="datePublished"> 发表于 2009-08-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p><span style="color: #003366;">java.util就相当于c++的STL，是Java的一个非常重要的包，有很多常用的数据类型，不同数据类型有不同的用途，而有些数据类似乎很相似，怎样选择应用，就需要对它们进行辨析。<br>下面列出了这些数据类型的特点，根据这些特点，就可以有针对性的选用<a id="more"></a><br></span></p>
+<p><span style="color: #003366;">* 缩进的层次结构，就是implement或extend的层次关系</span></p>
+<ul>
+<li>每个接口或类都具备其所有上层接口、类的特性 </li>
+</ul>
+<p><span style="color: #003366;">Collection<br>……..|——–List<br>……..|……….|———-ArrayList<br>……..|……….|———-Vector<br>……..|……….|………….|—–Stack<br>……..|……….|———-LinkedList<br>……..|——–Set<br>……………….|———-HashSet.<br>……………….|………….|—–LinkedHashSet<br>……………….|———-SortedSet<br>……………………………|—–TreeSet </span></p>
+<p><span style="color: #003366;">Iterator<br>…..|——-ListIterator </span></p>
+<p><span style="color: #003366;">Map<br>…..|——Hashtable<br>…..|……….|——Properties<br>…..|——HashMap<br>…..|……….|——LinkedHashMap<br>…..|——WeakHashMap<br>…..|——SortedMap<br>…………….|——TreeMap </span></p>
+<p><span style="color: #003366;">Collection.<br>●..实现该接口及其子接口的所有类都可应用clone()方法，并是序列化类. </span></p>
+<p><span style="color: #003366;">…..List.<br>…..●..可随机访问包含的元素<br>…..●..元素是有序的<br>…..●..可在任意位置增、删元素<br>…..●..不管访问多少次，元素位置不变<br>…..●..允许重复元素<br>…..●..用Iterator实现单向遍历，也可用ListIterator实现双向遍历 </span></p>
+<p><span style="color: #003366;">……….ArrayList<br>……….●..用数组作为根本的数据结构来实现List<br>……….●..元素顺序存储<br>……….●..新增元素改变List大小时，内部会新建一个数组，在将添加元素前将所有数据拷贝到新数组中<br>……….●..随机访问很快，删除非头尾元素慢，新增元素慢而且费资源<br>……….●..较适用于无频繁增删的情况<br>……….●..比数组效率低，如果不是需要可变数组，可考虑使用数组<br>……….●..非线程安全<br>.<br>……….Vector.<br>……….●..另一种ArrayList，具备ArrayList的特性<br>……….●..所有方法都是线程安全的（双刃剑，和ArrayList的主要区别）<br>……….●..比ArrayList效率低 </span></p>
+<p><span style="color: #003366;">……………Stack<br>……………●..LIFO的数据结构 </span></p>
+<p><span style="color: #003366;">……….LinkedList.<br>……….●..链接对象数据结构（类似链表）<br>……….●..随机访问很慢，增删操作很快，不耗费多余资源<br>……….●..非线程安全 </span></p>
+<p><span style="color: #003366;">…..Set.<br>…..●..不允许重复元素，可以有一个空元素<br>…..●..不可随机访问包含的元素<br>…..●..只能用Iterator实现单向遍历 </span></p>
+<p><span style="color: #003366;">……….HashSet<br>……….●..用HashMap作为根本数据结构来实现Set<br>……….●..元素是无序的<br>……….●..迭代访问元素的顺序和加入的顺序不同<br>……….●..多次迭代访问，元素的顺序可能不同<br>……….●..非线程安全 </span></p>
+<p><span style="color: #003366;">……………LinkedHashSet<br>……………●..基于HashMap和链表的Set实现<br>……………●..迭代访问元素的顺序和加入的顺序相同<br>……………●..多次迭代访问，元素的顺序不便<br>……………●..因此可说这是一种有序的数据结构<br>……………●..性能比HashSet差<br>……………●..非线程安全 </span></p>
+<p><span style="color: #003366;">……….SortedSet<br>……….●..加入SortedSet的所有元素必须实现Comparable接口<br>……….●..元素是有序的 </span></p>
+<p><span style="color: #003366;">……………TreeSet.<br>……………●..基于TreeMap实现的SortedSet<br>……………●..排序后按升序排列元素<br>……………●..非线程安全 </span></p>
+<p><span style="color: #003366;">－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ </span></p>
+<p><span style="color: #003366;">Iterator..<br>●..对Set、List进行单向遍历的迭代器 </span></p>
+<p><span style="color: #003366;">……….ListIterator.<br>……….●..对List进行双向遍历的迭代器 </span></p>
+<p><span style="color: #003366;">－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ </span></p>
+<p><span style="color: #003366;">Map<br>●..键值对，键和值一一对应<br>●..不允许重复的键. </span></p>
+<p><span style="color: #003366;">…..Hashtable.<br>…..●..用作键的对象必须实现了hashcode()、equals()方法，也就是说只有Object及其子类可用作键<br>…..●..键、值都不能是空对象<br>…..●..多次访问，映射元素的顺序相同<br>…..●..线程安全的 </span></p>
+<p><span style="color: #003366;">……….Properties<br>……….●..键和值都是字符串 </span></p>
+<p><span style="color: #003366;">…..HashMap<br>…..●..键和值都可以是空对象<br>…..●..不保证映射的顺序<br>…..●..多次访问，映射元素的顺序可能不同<br>…..●..非线程安全 </span></p>
+<p><span style="color: #003366;">……………LinkedHashMap<br>……………●..多次访问，映射元素的顺序是相同的<br>……………●..性能比HashMap差 </span></p>
+<p><span style="color: #003366;">…..WeakHashMap..<br>…..●..当某个键不再正常使用时，垃圾收集器会移除它，即便有映射关系存在<br>…..●..非线程安全 </span></p>
+<p><span style="color: #003366;">…..SortedMap.<br>…..●..键按升序排列<br>…..●..所有键都必须实现.Comparable.接口. </span></p>
+<p><span style="color: #003366;">……………TreeMap.<br>……………●..基于红黑树的SortedMap实现<br>……………●..非线程安全 </span></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2009/08/02/javautildatatype/" data-title="java util常用数据类型 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2009/08/10/androidadbcmd/" title="android的adb命令使用">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android的adb命令使用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2009/08/02/linuxcmd/"  title="常用linux命令">
+ <strong>下一篇：</strong><br/> 
+ <span>常用linux命令
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

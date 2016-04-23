@@ -1,0 +1,697 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>保护你的隐私，五种控制Android应用的权限的方法 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="这篇文章目的在于介绍Android系统上控制权限的方法，读者只要使用过Android，或是对智能机平台有所了解，就能看懂，不需要专门的编程知识。
+　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？相比Apple，Microsoft严格控制生态系统(从苹果给开发者的”App Store Guideline”可见一斑)，只允许通过官方应用商店安装应用，并对每份上传进行仔细地审查而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="保护你的隐私，五种控制Android应用的权限的方法">
+<meta property="og:url" content="http://www.liulang.cq.cn/2012/08/10/protect-privacy-control-the-permissions/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="这篇文章目的在于介绍Android系统上控制权限的方法，读者只要使用过Android，或是对智能机平台有所了解，就能看懂，不需要专门的编程知识。
+　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？相比Apple，Microsoft严格控制生态系统(从苹果给开发者的”App Store Guideline”可见一斑)，只允许通过官方应用商店安装应用，并对每份上传进行仔细地审查而">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_1.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_2.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_3.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_4.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_5.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_6.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_7.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_8.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_9.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_10.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_11.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_12.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_13.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_14.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_15.jpg">
+<meta property="og:image" content="http://www.williamlong.info/upload/2993_17.jpg">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="保护你的隐私，五种控制Android应用的权限的方法">
+<meta name="twitter:description" content="这篇文章目的在于介绍Android系统上控制权限的方法，读者只要使用过Android，或是对智能机平台有所了解，就能看懂，不需要专门的编程知识。
+　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？相比Apple，Microsoft严格控制生态系统(从苹果给开发者的”App Store Guideline”可见一斑)，只允许通过官方应用商店安装应用，并对每份上传进行仔细地审查而">
+<meta name="twitter:image" content="http://www.williamlong.info/upload/2993_1.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2012/08/10/protect-privacy-control-the-permissions/" title="保护你的隐私，五种控制Android应用的权限的方法" itemprop="url">保护你的隐私，五种控制Android应用的权限的方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2012-08-10T09:50:38.000Z" itemprop="datePublished"> 发表于 2012-08-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-为什么Android总是事无巨细地告诉你应用索取的每一项权限？"><span class="toc-number">1.</span> <span class="toc-text">　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Android有哪些”权限”"><span class="toc-number">2.</span> <span class="toc-text">　　2  Android有哪些”权限”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-权限控制的方法"><span class="toc-number">3.</span> <span class="toc-text">3  权限控制的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-自启动的控制"><span class="toc-number">4.</span> <span class="toc-text">　　4  自启动的控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-其他"><span class="toc-number">5.</span> <span class="toc-text">　　5  其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录"><span class="toc-number">6.</span> <span class="toc-text">　附录:</span></a></li></ol>
+		
+		</div>
+		
+		<p>这篇文章目的在于介绍Android系统上控制权限的方法，读者只要使用过Android，或是对智能机平台有所了解，就能看懂，不需要专门的编程知识。</p>
+<h3 id="1-为什么Android总是事无巨细地告诉你应用索取的每一项权限？"><a href="#1-为什么Android总是事无巨细地告诉你应用索取的每一项权限？" class="headerlink" title="　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？"></a>　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？</h3><p>相比Apple，Microsoft严格控制生态系统(从苹果给开发者的”App Store Guideline”可见一斑)，只允许通过官方应用商店安装应用，并对每份上传进行仔细地审查而言，Android的开放就意味着，Google需要向用户提供一系列用于为自己负责的流程、工具。所以在安装应用前，Android总是要事无巨细地告诉你，应用肯需要控制什么权限。</p>
+<p>同样，开发者也制作了一系列易用的工具，用以鉴别可疑的应用程序，或是控制权限。</p>
+<p><img src="http://www.williamlong.info/upload/2993_1.jpg" alt="Android权限"></p>
+<p>图1 Android 官方市场会强制提醒用</p>
+<p><a id="more"></a><strong>Andoird哪里开放了？</strong></p>
+<p>在Android中，用户能自由从本地安装应用，自由地对SD卡进行操作，自由选择应用市场。</p>
+<p>如果愿意放弃保修，用户还能轻易地实行root，解锁基带(baseband)。只有一些产品会严密地锁定bootloader(如摩托罗拉)。</p>
+<p>最重要的是，因为ASOP(Android源代码开放计划)的存在，绝大部分的Android代码都是开源的，开发者可以由此对Android系统进行深入的修改，甚至可以自行编写一个符合Android规范的系统实例(如Cyanogen Mod)。正是因为ASOP，这篇文章才可能介绍多达5种原理不同的权限控制方法。</p>
+<p><img src="http://www.williamlong.info/upload/2993_2.jpg" alt="图2， Android开源计划的标志"></p>
+<p>图2 Android开源计划的标志</p>
+<p><strong>开放的风险</strong></p>
+<p>不考虑Symbian，Windows Phone 6.5(及以下)平台，那么几乎所有的智能手机病毒都是Android平台的，甚至官方Android Market也闹过<a href="http://tech.sina.com.cn/t/2011-03-06/16595252130.shtml" target="_blank" rel="external">几次乌龙</a>。在国内水货横行的市场，情况更是火上浇油，不法业者可以在手机的ROM，甚至是bootloader中做好手脚，让用户有病无法医。</p>
+<p>在Android中，用户可以允许系统安装来自”未知源”(也就是非Google官方的，或手机预置市场的)应用程序。于是，移动平台最重要的门神——数字签名就被绕过了。</p>
+<p><img src="http://www.williamlong.info/upload/2993_3.jpg" alt="图3 Android 允许未知安装未知来源的应用程"></p>
+<p>图3 Android 允许未知安装未知来源的应用程</p>
+<p>出于Android的开放性，也有不允许”未知源”的反例：亚马逊的Kindle Fire平板使用了深度定制的Android，它只允许安装来自亚马逊官方商店的应用程序。</p>
+<p><img src="http://www.williamlong.info/upload/2993_4.jpg" alt="图4 亚马逊的 Kindle Fire 仅允许通过自带的市场安装应用"></p>
+<p>图4 亚马逊的 Kindle Fire 仅允许通过自带的市场安装应用</p>
+<p>&nbsp;</p>
+<h3 id="2-Android有哪些”权限”"><a href="#2-Android有哪些”权限”" class="headerlink" title="　　2  Android有哪些”权限”"></a>　　2  Android有哪些”权限”</h3><p>首先需要明确一下Android中的种种”权限”。Android是在Linux内核上建立一个硬件抽象层(Android HAL)，通过Dalvik以及各种库来执行android应用的。在手机启动时，首先需要由Bootloader(HTC手机上称作Hboot)引导Linux及手机上各个硬件设备的驱动程序，之后才启动Android系统。所以其实我们会涉及到四种不同涵义的权限：</p>
+<p><strong>Android权限(Permission)</strong></p>
+<p>这指Android中的一系列”Android.Permission.*”对象，是本文的中心内容。</p>
+<p>Google在Android框架内把各种对象(包括设备上的各类数据，传感器，拨打电话，发送信息，控制别的应用程序等)的访问权限进行了详细的划分，列出了约一百条”Android.Permission”。应用程序在运行前必须向Android系统声明它将会用到的权限，否则Android将会拒绝该应用程序访问通过该”Permission”许可的内容。</p>
+<p>比方说，搜狗输入法提供了一个智能通讯录的功能，用户可以在输入联系人拼音的前几个字符，或首字母，输入法就能自动呈现相关联系人的名字。为了实现这个功能，输入法必须声明它需要读取手机中联系人的能力，也就是在相关代码中加上声明”android.permission.READ_CONTACTS”对象。</p>
+<p><img src="http://www.williamlong.info/upload/2993_5.jpg" alt="图5 搜狗输入法的智能联系人功能"></p>
+<p>图5 搜狗输入法的智能联系人功能</p>
+<p>原生Android只提供了对”一刀切”式的管理，要么同意使用，否则就根本就不安装应用程序。当用户遇到希望使用程序的同时，又想禁止部分Permission的场合，他就无路可走。</p>
+<p>于是，不少开发者就捣鼓出了”第三条道路”；可惜的是，没有一种方法能同时做到既不需要将手机固件Root，又完全不涉及对原始应用程序进行反向工程的方法。</p>
+<p><strong>Root</strong></p>
+<p>Root指获得Android所在的Linux系统的Root(根)权限，有了根权限，你才能对Linux做出任意的修改。iOS中的越狱(Jailbreak) 相当于获得iOS系统的Root权限(iOS是一种类Unix系统，和Linux都使用Root的概念)。在已Root的设备中，通常都是使用一个叫”Superuser”(简称SU)的应用程序来向许可的程序授以Root权限。</p>
+<p><strong>Bootloader的解锁(Unlock)</strong></p>
+<p>利用数字签名，Bootloader可以限定只有正确签名的系统可以被引导。在修改固件以获得Root以前，解锁Bootloader通常是必须的。安装第三方修改、编译的固件也需要解锁Bootloader。</p>
+<p><strong>基带(Radio)解锁</strong></p>
+<p>在Android系统中，基带是上层软件与手机中无线设备(手机网络，Wi-Fi，蓝牙等)的驱动程序之间的中介。国外的网络运营商很喜欢锁定基带，从而保证用户只能使用运营商自己指定的sim卡。在我国，锁定基带是非法的，手机制造商、网络运营商也不可以通过锁定基带的方法对待违约客户。iOS的”解锁”就是解锁iOS中的基带软件。</p>
+<p><strong>为什么要控制Android权限</strong></p>
+<p>鱼和熊掌不可兼得，Android的世界有很多自由，坏人也能自由地做坏事。它的生态系统很强调自主：用户可以自主地减小风险，仅使用官方市场的应用程序，也可以自主地解除安全限制，从而获得更多自由。因此，在遇到坏事的时候，用户也不得不自主一下：</p>
+<p>1， 抵制不道德，乃至非法行为</p>
+<p>几乎所有的Android安全软件都能对来电、信息进行控制，以减少骚扰。</p>
+<p>另一方面，很多应用都会要求它们实际功能以外的权限，表现在非(主动)告知地搜集设备序列号，位置信息，诱使用户默认地上传联系人列表等方面。</p>
+<p>更坏一点的应用程序，则会踏入犯罪的范畴，比如能偷偷发出扣费信息，或是作为黑客的偷窥工具。</p>
+<p>2， 减少恶意软件的损害</p>
+<p>恶意软件即便潜伏成功，也难以获得权限，从而减少损失。</p>
+<p>3， 用户有权自主地在抑制应用程序的部分权限时，继续使用该应用程序，而只承担由于自行设置不当而带来的后果。</p>
+<p>用户拥有设备的所有权，因此有权自主控制设备上的内容、传感器等对象的访问；同时有权(不)运行，(不)编译设备上的应用程序。</p>
+<p>大多数应用程序在运行时，并未达成主动告知的义务，是失误；然而即使主动告知，用户还是可以不理会。</p>
+<p><strong>为什么Android官方市场的强制提醒权限的行为不属于主动告知：</strong></p>
+<p>通过Android官方市场，”打包安装器”安装应用程序时，所显示的”权限”仅是在安装包内AndroidManifest.xml声明的值，而非应用程序实际上会调用的内容。该值仅用来表明Android系统能向应用授予的最大可能的权限。即便一个”Hello World”式的应用程序，也可以在AndroidManifest.xml中声明所有可能的Android Permission。</p>
+<p>这就是说，在AndroidManifest.xml中声明的值与应用程序实际调用的权限有关联，但不等同，且这种提示是由Android系统负责实施的强制行为。</p>
+<p>正确的理解是：”应用程序(被迫地)让Android系统告知用户，它在AndroidManifest.xml中所声明的事项。”</p>
+<p>这意味着应用程序在使用重要权限前，依然需要自行、主动地通知用户相关事宜。</p>
+<p><img src="http://www.williamlong.info/upload/2993_6.jpg" alt="图6  应用程序须要AndroidManifest.xml中声明调用到的权限"></p>
+<p>图6  应用程序须要AndroidManifest.xml中声明调用到的权限</p>
+<p>然而，即便只是让一半的应用程序达到以上的标准，也是不可能的。应用程序需要通过收集用户信息，程序的错误日志。从而统计用户的喜好，改进程序。另一方面，这也是发送精确广告但不追溯到用户身份信息的方式，这一点对于免费应用而言，是极其重要的。我们之所以能知道不同型号手机的占有率，应用软件的流行度，是与这样的统计不可分离的。</p>
+<p>一旦每个应用程序都专业地主动发出提醒，不专业的用户(大多数用户都是不专业的)通常会将之视为如同海啸警报一般的危机。</p>
+<p>这么做对谁都没有好处——用户方的隐私权是毋庸置疑的，然而应用程序方面的获取信息记录的需求也是无可阻挡的。如果每个用户都打算阻止，只会落得被迫接受不平等条约的下场，在温饱以前，不会有人考虑小康的问题。</p>
+<p>于是，现状就变得有趣：用户人享受着相同的服务；其中大部分用户出于不知情/好意，默默地向开发者、广告商提供了信息，剩下的少数用户则能阻断这种劳务。而作为维持Android平台的信息商人Google，只确保在它的地盘里，不会发生触碰底线的事情。</p>
+<p><strong>一句话总结：</strong></p>
+<p>设备是我的，不管你怎么说，反正我说了算，但我说的话大多是不算数的。</p>
+<h3 id="3-权限控制的方法"><a href="#3-权限控制的方法" class="headerlink" title="3  权限控制的方法"></a>3  权限控制的方法</h3><p>这里开始介绍各种控制Android权限的办法。可惜的是，几乎所有的手段都需要对设备进行Root，如果不这么做，则需要付出不小代价。</p>
+<p><strong>App Shield(国内常见的名字:权限修改器)</strong></p>
+<p>它是一个需要付费的Android应用，其原理是修改应用程序的apk安装包，删除其中AndroidManifest.xml文件内，用于声明权限的对应”Android.Permission.*”条目，然后再用一个公开的证书对安装包重新签名(需要允许”未知源”)，这样一来，应用程序就不会向系统申请原先所需的权限。当应用运行至相应的流程时，系统将直接拒绝，从而达到用户控制权限的目的。</p>
+<p>对于已安装的应用，AppShield也会按照同样方法制作好apk安装包，然后让用户先卸载原始的应用，再安装调整过的应用。除了该应用数字签名外，用户可以随时通过执行同样的流程，将吊销的权限恢复。</p>
+<p><img src="http://www.williamlong.info/upload/2993_7.jpg" alt="图7 AppShield"></p>
+<p>图7 AppShield</p>
+<p><strong>Apk文件的结构</strong></p>
+<p>Android应用都是打包成以.apk扩展名结尾，实际上是zip的文件格式。</p>
+<p>一个合法的apk至少需要这些成分：</p>
+<p>根目录下的”AndroidManifest.xml”文件，用以向Android系统声明所需Android权限等运行应用所需的条件。</p>
+<p>根目录下的classes.dex(dex指Dalvik Exceptionable)，应用(application)本身的可执行文件(Dalvik字节码) 。</p>
+<p>根目录下的res目录，包含应用的界面设定。(如果仅是一个后台执行的”service”对象，则不必需)</p>
+<p>Apk根目录下的META-INF目录也是必须的，它用以存放应用作者的公钥证书与应用的数字签名。</p>
+<p>当应用被安装后，这个apk文件会原封不动地移至设备的data/app目录下，实际运行的，则是Dalvik将其中Classes.dex进行编译后的Classes.odex(存放在Dalvik缓存中，刷机时的’cache wipe就是清除Dalvik的odex文件缓存’)。</p>
+<p><strong>优点：</strong></p>
+<p>完全不需要Root，适用于所有版本的Android设备。不会损坏系统，可以吊销任意一项Android权限。</p>
+<p><strong>问题：</strong></p>
+<p>1，需要重新安装应用，该行为可能会丢失应用的配置、历史记录。</p>
+<p>2，执行权限吊销的应用的数字签名会被更改，无法直接更新。对于那些设计不良(没有意料到’不声明权限’情况的)，或有额外自校验的应用，可能会无法运行。</p>
+<p>3，无法用于设备上的预装应用，除非制造商好心地将该应用设置为”可以删除”的状态。</p>
+<p>4，这个方法修改了apk包中的内容——尽管实际上AndroidManifest.xml和数字签名并不算是应用程序的本身，但修改它们可能引发著作权的问题。</p>
+<p>5，需要开启”未知源”。</p>
+<p>6，这是一个收费应用。</p>
+<p><strong>CyanogenMod 7.1(及以上版本)</strong></p>
+<p>Cyanogenmod是一款著名的第三方编写的开源Android ROM。</p>
+<p>CM7.1加入了控制权限的开关，官方的名称是”Permission Revoking”，任何非系统/保护应用在安装后，可直接吊销任意一项权限，其效果等价于直接删除apk包中AndroidManifest.xml的对应条目，但不会引发自校验的问题。CM的权限工具的作用等同于AppShield，无非是在Android自身的权限系统中添加了一个开关。</p>
+<p><img src="http://www.williamlong.info/upload/2993_8.jpg" alt="图8 Cyanogen Mod 7.1中的权限吊销(Permission Revoking)设定"></p>
+<p>图8 Cyanogen Mod 7.1中的权限吊销(Permission Revoking)设定</p>
+<p><strong>优点：</strong></p>
+<p>免费，使用简便，可随时，任意地吊销、恢复非预装应用的任意一项权限；不存在数字签名的问题，因而不影响使用自校验的应用程序。</p>
+<p><strong>问题：</strong></p>
+<p>此功能仅在Cyanogen Mod 7.1及以上版本提供，无法用于其它rom。因为是由Android系统出面吊销权限，其实现原理与App Shield完全相同，同样的，应用程序会因为设计不良而出现崩溃。</p>
+<p><strong>Permission Denied</strong></p>
+<p>这是可以吊销任意Android应用(注意，不当地吊销系统应用的权限可能会导致手机固件损坏，无法启动)的任意权限，对权限的修改在重启后生效。</p>
+<p>实现原理应该与Cyanogen Mod 7.1+完全相同，适用于任何已经Root的系统，因为一般的Android系统虽然事实上支持权限吊销，但没有像Cyanogen Mod那样放置接口，因此需要重启后才能应用权限配置。同样也有系统出面拒绝权限而导致的崩溃现象。</p>
+<p><img src="http://www.williamlong.info/upload/2993_9.jpg" alt="图9 Permission Denied免费版吊销应用程序权限的场景"></p>
+<p>图9 Permission Denied免费版吊销应用程序权限的场景</p>
+<p><strong>优点：</strong></p>
+<p>效果与Cyanogen Mod中的权限吊销效果一致，且可吊销系统应用的权限。同时提供了免费与收费版本，免费版并没有基本功能的缺失。适用于所有版本号不低于1.6的Android设备。</p>
+<p><strong>问题：</strong></p>
+<p>调整后的权限需要重启才能生效。设计不良的应用会崩溃。不恰当的权限修改会损坏系统，导致无法开机。</p>
+<p><strong>PDroid</strong></p>
+<p>PDroid实际上是一个Android内核补丁加上一个用于管理的外部应用。补丁需要在Recover环境中刷入系统，也可以由开发者自行移植入系统。该软件在Android ASOP 2.3.4代码基础上开发，仅适用于没有改动内核的Android 2.3系统，目前还未支持Android 4。</p>
+<p><img src="http://www.williamlong.info/upload/2993_10.jpg" alt="图10 PDroid的界面"></p>
+<p>图10 PDroid的界面</p>
+<p>为了避免Cyanogen Mod 7.1+权限吊销(Permission revoking)导致的崩溃问题，以及后台服务(如LBE，QQ手机管家等，PDroid的作者认为通过后台服务拦截权限并不是好办法)，PDroid并不阻止应用程序声明权限，但会在其实际索取相关信息时，予以阻止。通俗地说，就是签署协议但不执行。在PDroid的用户界面，用户能随时精确地控制涉及隐私的各项权限。对于某些内容，除了阻止外，用户还可以伪造一个随机或指定的数据。</p>
+<p>可控制的内容包括：</p>
+<p>IMEI(可伪造)</p>
+<p>IMSI(可伪造)</p>
+<p>SIM卡序列号(可伪造)</p>
+<p>手机号码(可伪造)</p>
+<p>来，去电号码</p>
+<p>SIM卡信息</p>
+<p>当前蜂窝网络信息</p>
+<p>(以上七者均来自Android.Permission.READ_PHONE_STATE)</p>
+<p>GPS定位信息 (可伪造，来自Android.Permission.FINE_LOCATION)</p>
+<p>基站定位   (可伪造，来自Android.Permission.COARSE_LOCATION)</p>
+<p>系统自带浏览器的历史，书签(Android.Permission.BOOKMARKS)</p>
+<p>联系人    (android.permission.READ_CONTACTS)</p>
+<p>通话记录   (android.permission.READ_CONTACTS)</p>
+<p>系统日志   (android.permission.READ_LOGS)</p>
+<p>当前账户列表   (android.permission.GET_ACCOUNTS)</p>
+<p>当前账户的授权码  (android.permission.USE_CREDENTIALS)</p>
+<p>短信，彩信 (可能与这5个权限有关)</p>
+<p>android.permission.READ_SMS</p>
+<p>android.permission.RECEIVE_SMS</p>
+<p>android.permission.SEND_SMS</p>
+<p>android.permission.WRITE_SMS</p>
+<p>android.permission.RECEIVE_MMS</p>
+<p>日历    android.permission.READ_CALENDAR</p>
+<p>PDroid的内核补丁并不通用，每一个Rom都需要特定的补丁。开发者除了提供了几个特定机型下Cyanogen Mod，HTC Sense修改版ROM的专用补丁外，还推出了一个补丁生成工具(PDroid Patcher)，用户可以给自己的ROM生成专用的内核补丁。使用该Patcher需要安装JDK(java Development Kit)。</p>
+<p><strong>优点：</strong></p>
+<p>PDroid避免了通过Android系统进行权限吊销的导致的潜在崩溃问题，也不需要后台服务。对隐私信息的控制是最精细的。尽管设备必须Root，但应用本身不需要Root权限。</p>
+<p><strong>问题：</strong></p>
+<p>安装过程是最繁琐，最不可靠的，容易导致ROM损坏，适用范围也小，需要用户有相当的技能(能安装JDK，会刷机)才可使用；只提供对隐私有关权限的控制，不提供网络访问，的控制。以这些为代价，它几乎没有其它缺点。</p>
+<p><strong>LBE安全大师</strong></p>
+<p>实际上最常用的是以LBE为代表的通过一个Root权限的后台服务来拦截相关行为的工具。除了LBE外，还有QQ手机管家等应用。这里以LBE安全大师为例介绍。</p>
+<p><img src="http://www.williamlong.info/upload/2993_11.jpg" alt="图11 LBE安全大师"></p>
+<p>图11 LBE安全大师</p>
+<p>LBE是国内一个叫”LBE安全小组”开发的工具，支持Android2.0～4.0。它的核心功能是像杀毒软件一般，通过一个需要Root权限的后台服务，劫持所有调用权限的行为，并放行用户许可的部分(其官方宣传为’API级别拦截’)。它和PDroid一样几乎不会引发应用程序崩溃，它支持拦截几个涉及用户的关键权限(LBE手机管家3.1/3.2)：</p>
+<p>读取短信  (android.permission.READ_CONTACTS)</p>
+<p>联系人记录  (android.permission.READ_CONTACTS)</p>
+<p>通话记录  (android.permission.READ_CONTACTS)</p>
+<p>定位   (Android.Permission.COARSE_LOCATION</p>
+<p>Android.Permission.FINE_LOCATION)</p>
+<p>手机识别码  (与Android.Permission.READ_PHONE_STATE有关)</p>
+<p>通话状态  (与Android.Permission.READ_PHONE_STATE有关)</p>
+<p>发送短信(具体原理不明，同样类似于禁止这五个权限</p>
+<p>android.permission.READ_SMS</p>
+<p>android.permission.RECEIVE_SMS</p>
+<p>android.permission.SEND_SMS</p>
+<p>android.permission.WRITE_SMS</p>
+<p>android.permission.RECEIVE_MMS)</p>
+<p>拨打电话  (android.permission.CALL_PHONE)</p>
+<p>通话监听  (android.permission.PROCESS_OUTGOING_CALLS)</p>
+<p>除此以外，LBE还可以分别控制应用在Wifi，手机网络的联网权限，其原理是依靠IPtables防火墙，而非通过Android的”Internet”权限。</p>
+<p>此外LBE手机管家还提供基于智能内容审查的短信拦截、来电归属地显示，以及禁用系统(保护)应用，进程管理，杀毒等功能。</p>
+<p>LBE提供两个版本，一个叫”LBE安全大师”，是一个全面的手机管家类应用，更新比较频繁，另一个版本(LBE手机隐私卫士，LBE Security lite)仅提供权限方面的管理。</p>
+<p>考虑到主要市场在国内，LBE的发行策略看上去有些奇怪，它在Google的官方市场并不发行最新版。通常只能只能在LBE的官方网页，以及国内的应用市场获得最新版本。</p>
+<p><strong>优点：</strong></p>
+<p>使用非常简单，功能强大而全面，风险很小，可以控制系统应用。适用范围广，有很多替代产品。</p>
+<p><strong>问题：</strong></p>
+<p>需要后台服务 (尽管蚕豆网有个评测，认为它对能耗几乎没有影响)，不能控制所有的Android权限。</p>
+<h3 id="4-自启动的控制"><a href="#4-自启动的控制" class="headerlink" title="　　4  自启动的控制"></a>　　4  自启动的控制</h3><p>Android对后台服务有着最好的支持。</p>
+<p>在Android中可以自由地开发一种称为’Service’的后台运行的对象，加上没有苹果公司对应用程序的严格限制。诸如QQ挂机，即时调用第三方应用程序之类的形式都可以轻易实现。</p>
+<p>为了全面支持后台服务，也为了适应移动设备资源紧张，不得不经常清理内存的问题，应用可在系统中设置触发器，当系统发生了某个特定特定事件时(系统启动，拨打电话，收发信息，安装、卸载应用，插上电源等，或应用程序自行定义的事件)，就会触发启动应用程序。</p>
+<p><strong>AutoStarts 自启动管理</strong></p>
+<p>AutoStarts是一个收费应用，通过它，用户能了解系统中每一项程序会在什么场合下被触发运行。如果提供Root权限，则还能禁止这样的行为。</p>
+<p>这里以Google Maps应用6.2版为例。默认情况下，这款应用总是会保持后台运行，并每小时向Google发送一次当前用户的位置信息。为了阻止这样的行为，需要联合使用AutoStarts与任意一款进程管理应用：在AutoStarts中，阻止Google Maps的自行启动(如图)，在每次使用完后，把Google Maps的进程杀掉。</p>
+<p><img src="http://www.williamlong.info/upload/2993_12.jpg" alt="图12 AutoStarts可以对自启动项目进行修改"></p>
+<p>图12 AutoStarts可以对自启动项目进行修改</p>
+<h3 id="5-其他"><a href="#5-其他" class="headerlink" title="　　5  其他"></a>　　5  其他</h3><p><strong>Root带来的风险</strong></p>
+<p>有一个钻牛角尖的说法认为，一旦对设备进行了Root，便无安全一说，只要恶意程序一旦偷偷获得Root级别，一切都是空谈。</p>
+<p>这种说法之所以钻牛角尖，是因为：一方面Android中的Root权限通常都是需要用户通过Superuser应用进行授权的，这已经够用，虽然不能指望Superuser无懈可击；另一方面，控制Android权限主要是为了让应用程序在”灰色地带”的行为收敛一些，它们实际显然不是病毒等犯罪软件。</p>
+<p><strong>著作权的问题 (作者不是法律方面的专家，以下言论仅供参考)</strong></p>
+<p>我们知道，Android中的应用程序是基于Java语言编写的。而为了达到跨平台的目的，Java软件是以字节码(或叫中间代码，bytecode)，而非计算机能直接执行的机器码(Machine Code，有时也叫作Binary)的形式存在。因此执行Java软件时，需要一个Java虚拟机(Android系统中的Java虚拟机就是Dalvik)负责解释运行，有的时候，虚拟机还会通过即时编译(JIT)的方法将字节码编译为机器码后再运行，以提高程序的执行效率。</p>
+<p>这就出现一个很有趣的现象：</p>
+<p>除非另行规定，作为设备的拥有者，用户总是可以自行决定如何使用软件，能自行决定程序能否访问用户自己的计算机(移动设备亦然)里面的各个内容、对象。</p>
+<p>由此衍生出，在需要对代码编译、解释的场合，用户也能通过对编译器(解释器)的干预，来影响代码的执行效果。在Android中，用户还可以在Dalvik解释、编译的时候动手。</p>
+<p>这是因为，著作权仅保护了软件代码不受到非授权的反向工程，未授权传播等侵犯。另一方面，对于Android上的Java，网页中的javascript程序，赋予用户解释、编译的权利是程序能执行的先决条件；同时，软件发行者发通常也会主动提出放弃这种权利(表现为’软件按原样提供’、’不对使用软件造成的后果负责’等条目)</p>
+<p>在编译、解释的过程中，需要通过汇编(Assemble)，连接(Link)等方法将编译好的对象(Object)、方法(Function)联系起来。默认情况下，这些行为是由原始的代码(源代码、中间代码)与编译器(解释器)决定的，但是用户可以通过制约编译器(解释器)的设置，从而影响到最终代码。这么做是没有问题的。</p>
+<p>还有一种，应用程序在安装后，会在系统中产生一些缓存，或注册一些信息。当其中的内容有关用户数据时，读取或修改它们也是没有问题的。这就是所谓”只要是你的东西总是你的”；也是Cyanogen Mod、Permission Denied不会涉及版权问题的原因所在。</p>
+<p><strong>总之，一个Android应用之所以能运行的前提是：</strong></p>
+<p>1，首先，用户允许使用这个应用</p>
+<p>这也可以理解成：用户安装了应用(以及因此设定的后台对象)，购买了预装应用的手机。这一点即不影响应用程序的主动通知义务，也不影响用户事后的干预。</p>
+<p>2，接下来，用户允许Dalvik对该应用使用”解释”，”JIT”的方法，从而该应用程序得以执行。</p>
+<p>3，用户随时可以对该应用作出任意不违反版权的干预。</p>
+<p>所以，在没有另行规定的前提下，用户总是可以自行决定，通过给应用程序分配自定义的权限；或是在应用程序调取内容，对象时予以阻断。同时，用户也需要自行承担因不当操作产生的后果。</p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="　附录:"></a>　附录:</h3><p><strong>1、 数字签名</strong></p>
+<p>数字签名是一种使用了公钥加密领域的技术实现，用于鉴别数字信息的方法。一套数字签名通常定义两种互补的运算，一个用于签名，另一个用于验证。数字签名可以轻易地验证完整性(正确性)，合法签署的数字签名具有不可否认性。 (摘录自维基百科”数字签名”条目，有修改)</p>
+<p><strong>2、 版权声明</strong></p>
+<p>文章中引用的图标，图片或图片的部分，以及部分文字的引用，仅出于合理使用的目的，可能是持有人版权所有的。</p>
+<p><strong>3、 一些行为的说明</strong></p>
+<p><strong>不道德行为</strong></p>
+<p>应用程序在启动时，或在主动告知以前，试图索取、收集电话号码、邮箱地址、位置信息等与个人身份直接关联的内容。如果是与个人关联，但不能直接联系到个人信息的IMEI等设备、SIM卡的串号，则稍微好一些。</p>
+<p>附图1，不道德的应用程序在启动的第一时间就试图获取隐私信息</p>
+<p><img src="http://www.williamlong.info/upload/2993_13.jpg" alt="新浪微博"></p>
+<p>(新浪微博2.8)，无论用户是否绑定了手机，应用都会第一时间记录当前手机的号码</p>
+<p><img src="http://www.williamlong.info/upload/2993_14.jpg" alt="UCWEB"></p>
+<p>(UC浏览器，快拍二维码)，应用总是会不主动通知地记录设备的位置信息</p>
+<p><strong>没有实行主动通知的例子</strong></p>
+<p><a href="http://www.williamlong.info/upload/2993_16.jpg" target="_blank" rel="external"><img src="http://www.williamlong.info/upload/2993_15.jpg" alt="UCWEB"></a></p>
+<p>附图2 这个应用程序在第一次启动时便开始收集位置信息，用户需要切换六次屏幕才能看到有关位置信息的提示。这项提示还有意忽略应用程序本身就会记录用户位置信息，即便用户并不使用需要位置信息的服务</p>
+<p><strong>主动通知的例子</strong></p>
+<p><img src="http://www.williamlong.info/upload/2993_17.jpg" alt="taobao"></p>
+<p>附图3 主动通知就是在第一屏的醒目处，或用醒目的对比色等强调方式进行通告.</p>
+<p>&nbsp;</p>
+<p>转自：<a href="http://www.williamlong.info/archives/2993.html" target="_blank" rel="external">http://www.williamlong.info/archives/2993.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动开发/">移动开发</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2012/08/10/protect-privacy-control-the-permissions/" data-title="保护你的隐私，五种控制Android应用的权限的方法 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/01/16/android-use-internal-hidden-apis/" title="Android-使用internal（com.android.internal）和hidden（@hide）APIs 备忘">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android-使用internal（com.android.internal）和hidden（@hide）APIs 备忘</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2011/12/05/10-android-app-performance-tips-for-developers/"  title="给Android应用开发者的十个建议">
+ <strong>下一篇：</strong><br/> 
+ <span>给Android应用开发者的十个建议
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-为什么Android总是事无巨细地告诉你应用索取的每一项权限？"><span class="toc-number">1.</span> <span class="toc-text">　　1  为什么Android总是事无巨细地告诉你应用索取的每一项权限？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Android有哪些”权限”"><span class="toc-number">2.</span> <span class="toc-text">　　2  Android有哪些”权限”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-权限控制的方法"><span class="toc-number">3.</span> <span class="toc-text">3  权限控制的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-自启动的控制"><span class="toc-number">4.</span> <span class="toc-text">　　4  自启动的控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-其他"><span class="toc-number">5.</span> <span class="toc-text">　　5  其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录"><span class="toc-number">6.</span> <span class="toc-text">　附录:</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

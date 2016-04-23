@@ -1,0 +1,494 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>编译 android 2.1 (eclair) 源码 For HTC G1 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="1.           说明
+1)           下载编译最基本的android源码，无法在真机上使用（不能生成boot.img），只能在模拟器上使用。这是因为没有编译相关机型的内核和硬件  驱动。以下介绍的是用android源码编译出对应HTC G1的版本，和烧写的过程。编译生成的版本除相机不能用之外，其它绝大  部分功能都能正常使用，在G1上运行2.1版的速度也不错。
+2)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译 android 2.1 (eclair) 源码 For HTC G1">
+<meta property="og:url" content="http://www.liulang.cq.cn/2010/12/18/android-2-1-eclair-for-htc-g1/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="1.           说明
+1)           下载编译最基本的android源码，无法在真机上使用（不能生成boot.img），只能在模拟器上使用。这是因为没有编译相关机型的内核和硬件  驱动。以下介绍的是用android源码编译出对应HTC G1的版本，和烧写的过程。编译生成的版本除相机不能用之外，其它绝大  部分功能都能正常使用，在G1上运行2.1版的速度也不错。
+2)">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编译 android 2.1 (eclair) 源码 For HTC G1">
+<meta name="twitter:description" content="1.           说明
+1)           下载编译最基本的android源码，无法在真机上使用（不能生成boot.img），只能在模拟器上使用。这是因为没有编译相关机型的内核和硬件  驱动。以下介绍的是用android源码编译出对应HTC G1的版本，和烧写的过程。编译生成的版本除相机不能用之外，其它绝大  部分功能都能正常使用，在G1上运行2.1版的速度也不错。
+2)">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2010/12/18/android-2-1-eclair-for-htc-g1/" title="编译 android 2.1 (eclair) 源码 For HTC G1" itemprop="url">编译 android 2.1 (eclair) 源码 For HTC G1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2010-12-18T12:37:22.000Z" itemprop="datePublished"> 发表于 2010-12-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>1.           说明</p>
+<p>1)           下载编译最基本的android源码，无法在真机上使用（不能生成boot.img），只能在模拟器上使用。这是因为没有编译相关机型的内核和硬件  驱动。以下介绍的是用android源码编译出对应HTC G1的版本，和烧写的过程。编译生成的版本除相机不能用之外，其它绝大  部分功能都能正常使用，在G1上运行2.1版的速度也不错。</p>
+<p>2)          本文主要参考日文文档G1/G2烧机指南，感谢原文作者，原文地址：<br><a href="http://code.google.com/p/android-development-environment/wiki/EclaironADP1andADP2" target="_blank" rel="external">http://code.google.com/p/android-development-environment/wiki/EclaironADP1andADP2</a><br>同时加入中文系统 的支持和JIT支持（提高速 度），以及相关文字解释。</p>
+<a id="more"></a>
+<p>3)          以下步骤都经过验证（只验证G1手机，G2部分请参见日文文档），实验系统ubuntu8.04，实验日期2010年5月8日</p>
+<p>4)          关键字: android 2.1 eclair g1 源码编译</p>
+<p>2.            建立android源码编译目录<br>_$ export ANDROID=/exports/android/android_2.1<em>cn/<br>$  mkdir -p  $ANDROID<br>$ cd $ANDROID</em></p>
+<p>3.           源码下载<br>_$ repo init -u   git://android.git.kernel.org/platform/manifest.git -b android-2.1_r2 <strong> ＃设定下载</strong> 2.1<strong>版代码</strong><br>$ vi .repo/local<em>manifest.xml           # __新建下载配置文件</em><br>编辑内容如下</p>
+<p>&lt;?xml version=”1.0″ encoding=”UTF-8″?&gt;<br>&lt;manifest&gt;<br>&lt;project path=”kernel” name=”kernel/msm” revision=”refs/heads/android-msm-2.6.29-donut”/&gt;<br>&lt;project path=”vendor/htc/common-open” name=”platform/vendor/htc/common-open” revision=”master”/&gt;<br>&lt;project path=”vendor/htc/dream-open” name=”platform/vendor/htc/dream-open” revision=”master”/&gt;<br>&lt;project path=”vendor/htc/prebuilt-open” name=”platform/vendor/htc/prebuilt-open” revision=”master”/&gt;<br>&lt;project path=”vendor/htc/sapphire-open” name=”platform/vendor/htc/sapphire-open” revision=”master”/&gt;<br>&lt;project path=”vendor/qcom/android-open” name=”platform/vendor/qcom/android-open” revision=”master”/&gt;<br>&lt;project path=”vendor/qcom/proprietary-open” name=”platform/vendor/qcom/proprietary-open” revision=”master”/&gt;<br>&lt;project path=”vendor/pv-open” name=”platform/vendor/pv-open” revision=”master”/&gt;<br>&lt;project path=”vendor/aosp” name=”platform/vendor/aosp” revision=”master”/&gt;<br>&lt;project path=”hardware/htc/dream” name=”platform/hardware/htc/dream” revision=”master”/&gt;<br>&lt;/manifest&gt;</p>
+<blockquote>
+<p><em> </em></p>
+<p><em> </em><br><em> </em></p>
+</blockquote>
+<p><em> </em>注意：其中msm是高通芯片组，path指明下载到源码目录中的位置，name指明git上的项目名<br><em>$ repo sync                    # __开始下载代码，此时需要等待较长时间</em></p>
+<p>4.           打补丁以支持动态壁纸（此为步骤为可选）<br>_$ wget <a href="http://android-development-environment.googlecode.com/files/patch_devphone_eclair.tar.gz" target="_blank" rel="external">http://android-development-environment.googlecode.com/files/patch_devphone_eclair.tar.gz</a><br>$ tar zxvf  patch_devphone<em>eclair.tar.gz<br>$  ./patch/eclair-build-patch.sh</em></p>
+<p>5.           编译内核及无线网络驱动<br>_$ cd $ANDROID/kernel<br>$ make  ARCH=arm    CROSS_COMPILE=../prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/arm-eabi-    msm<em>defconfig                  # <strong>设 定默认的</strong>msm<strong>配置</strong><br>$ vi  .config                    # <strong>修改新生成的配置文件，以重新设置</strong>CPU__最高频率，修改如下：</em><br>_修改<strong>CONFIG_MSM_CPU_FREQ_ONDEMAND_MAX</strong>项为<strong>CONFIG_MSM_CPU_FREQ_ONDEMAND<em>MAX=528000</em><br>_$ make ARCH=arm   CROSS_COMPILE=../prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/arm-eabi-   #</strong>编译内核<strong><br>$ cd  $ANDROID/system/wlan/ti/sta_dk_4_0_4_32<br>$ make  ARCH=arm    CROSS_COMPILE=$ANDROID/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/arm-eabi-    KERNEL_DIR=$ANDROID/kerne         l </strong>＃编译无线网络驱动__<br>$ cp $ANDROID/kernel/arch/arm/boot/zImage   $ANDROID/vendor/htc/dream-open/kernel<br>$ cp   $ANDROID/system/wlan/ti/sta_dk_4_0_4<em>32/wlan.ko   $ANDROID/vendor/htc/dream-open/wlan.ko</em></p>
+<p>6.           编译android源码<br>在HTC网站<a href="http://developer.htc.com/adp.html" target="_blank" rel="external">http://developer.htc.com/adp.html</a><br>下载名为_signed-dream_devphone<em>userdebug-ota-14721.zip</em>的包，并把它放在$ANDROID目录下<br>_$ cd $ANDROID<br>$ source  build/envsetup.sh<br>$  lunch aosp_dream_us-eng           # <strong>指明机型</strong><br>$ cd vendor/htc/dream-open<br>$   ./unzip-files.sh <strong>＃　解压</strong>htc<strong>相关驱动</strong><br>$ cd  $ANDROID<br>$ vi  buildspec.mk <strong>＃　新建配置文件</strong><br><strong>加入如下内容</strong><br>CUSTOM_LOCALES:=zh<em>CN</em> <em># __设置编译为中文系统</em><br>_WITH<em>JIT:=true</em> <em># <strong>加入</strong>JIT<strong>支持，使得运算速度加快</strong>1-2__倍</em><br><em>$ make -j2 <strong>＃</strong> <strong>编译</strong>android__源码，需要等待较长时间</em></p>
+<p>7.           把编译好的软件烧写到手机<br>用usb线连接手机到电脑，按home+power键将手机启动到工程模式，按back键准备烧写<br><em>$ <a>export  PATH=$PATH:$ANDROID/out/host/linux-x86/bin</a> # <strong>把 烧写工具所在目录加上路径</strong><br>$ cd  out/target/product/dream-open/<br>$ fastboot flash  system system.img<br>$  fastboot flash boot boot.img<br>$ fastboot reboot</em><br>烧写系统后第一次启 动手机需要几分钟，请耐心等待</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动开发/">移动开发</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2010/12/18/android-2-1-eclair-for-htc-g1/" data-title="编译 android 2.1 (eclair) 源码 For HTC G1 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2010/12/18/androiddev-10-opensourceproject/" title="Android开发者必须深入学习的10个应用开源项目">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android开发者必须深入学习的10个应用开源项目</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2010/12/02/nutch-eclipse/"  title="Nutch1.0导入Eclipse中配置运行">
+ <strong>下一篇：</strong><br/> 
+ <span>Nutch1.0导入Eclipse中配置运行
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,622 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ubuntu9.10下编译Android源代码 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="本文将为大家介绍的是如何设置Android源码的编译环境，包括Linux下的配置。主要基于Android 1.5环境，希望对大家了解Android开发有所帮助。 
+本次编译过程主要参考官方文档（http://source.Android.com/download)和网上相关资料（如http://blog.csdn.net/liaoshengjiong/archive/2009/03/04/3957">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu9.10下编译Android源代码">
+<meta property="og:url" content="http://www.liulang.cq.cn/2010/04/27/androidsource/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="本文将为大家介绍的是如何设置Android源码的编译环境，包括Linux下的配置。主要基于Android 1.5环境，希望对大家了解Android开发有所帮助。 
+本次编译过程主要参考官方文档（http://source.Android.com/download)和网上相关资料（如http://blog.csdn.net/liaoshengjiong/archive/2009/03/04/3957">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu9.10下编译Android源代码">
+<meta name="twitter:description" content="本文将为大家介绍的是如何设置Android源码的编译环境，包括Linux下的配置。主要基于Android 1.5环境，希望对大家了解Android开发有所帮助。 
+本次编译过程主要参考官方文档（http://source.Android.com/download)和网上相关资料（如http://blog.csdn.net/liaoshengjiong/archive/2009/03/04/3957">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2010/04/27/androidsource/" title="ubuntu9.10下编译Android源代码" itemprop="url">ubuntu9.10下编译Android源代码</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2010-04-27T07:34:04.000Z" itemprop="datePublished"> 发表于 2010-04-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>本文将为大家介绍的是如何设置Android源码的编译环境，包括Linux下的配置。主要基于Android 1.5环境，希望对大家了解Android开发有所帮助。 </p>
+<p>本次编译过程主要参考官方文档（<a href="http://source.Android.com/download)和网上相关资料（如http://blog.csdn.net/liaoshengjiong/archive/2009/03/04/3957749.aspx" target="_blank" rel="external">http://source.Android.com/download)和网上相关资料（如http://blog.csdn.net/liaoshengjiong/archive/2009/03/04/3957749.aspx</a>) </p>
+<p>编译环境：Ubuntu9.10 </p>
+<p><strong><strong>1、安装一些环境<a id="more"></a></strong> </strong></p>
+<pre>
+    <li>sudo apt-get install build-essential  </li>
+    <li> sudo apt-get install make  </li>
+    <li> sudo apt-get install gcc  </li>
+    <li> sudo apt-get install g++  </li>
+    <li> sudo apt-get install libc6-dev  </li>
+    <li>   </li>
+    <li> sudo apt-get install patch  </li>
+    <li> sudo apt-get install texinfo  </li>
+    <li> sudo apt-get install libncurses-dev  </li>
+    <li>   </li>
+    <li> sudo apt-get install git-core gnupg  </li>
+    <li> sudo apt-get install flex bison gperf libsdl-dev libesd0-dev libwxgtk2.6-dev build-essential zip curl  </li>
+    <li> sudo apt-get install ncurses-dev   </li>
+    <li> sudo apt-get install zlib1g-dev  </li>
+    <li> sudo apt-get install valgrind  </li>
+    <li> sudo apt-get install python2.5 </li>
+</pre>
+
+<p>安装java环境 </p>
+<pre>
+
+1.  <span><span>sudo apt-get install sun-java6-jre sun-java6-plugin sun-java6-fonts sun-java6-jdk </span></span>
+</pre>
+
+<p>注：官方文档说如果用sun-java6-jdk可出问题，得要用sun-java5-jdk。经测试发现，如果仅仅make（make不包括make sdk)，用sun-java6-jdk是没有问题的。而make sdk，就会有问题，严格来说是在make doc出问题，它需要的javadoc版本为1.5。 </p>
+<p>因此，我们安装完sun-java6-jdk后最好再安装sun-java5-jdk，或者只安装sun-java5-jdk。这里sun-java6-jdk和sun-java5-jdk都安装，并只修改javadoc.1.gz和javadoc。因为只有这两个是make sdk用到的。这样的话，除了javadoc工具是用1.5版本，其它均用1.6版本：  </p>
+<pre>
+
+1.  <span><span>sudo apt-get install sun-java5-jdk </span></span>
+</pre>
+
+<p>修改javadoc的link </p>
+<pre>
+
+1.  <span><span>cd /etc/alternatives  </span></span>
+2.  <span>sudo rm javadoc.1.gz  </span>
+3.  <span>sudo ln -s /usr/lib/jvm/java-1.5.0-sun/man/man1/javadoc.1.gz javadoc.1.gz  </span>
+4.  <span>sudo rm javadoc  </span>
+5.  <span>sudo ln -s /usr/lib/jvm/java-1.5.0-sun/bin/javadoc javadoc </span>
+</pre>
+
+<p>2、设置环境变量 </p>
+<pre>
+
+1.  <span><span>vim ~/.bashrc </span></span>
+</pre>
+
+<p>在.bashrc中新增或整合PATH变量，如下 </p>
+<pre>
+
+1.  <span><span class="preprocessor"><span style="color: #808080;">#java 程序开发/运行的一些环境变量 </span></span><span> </span></span>
+2.  <span>JAVA_HOME=/usr/lib/jvm/java-6-sun  </span>
+3.  <span>JRE_HOME=${JAVA_HOME}/jre  </span>
+4.  <span>export Android_JAVA_HOME=$JAVA_HOME  </span>
+5.  <span>export CLASSPATH=.:${JAVA_HOME}/lib:$JRE_HOME/lib:$CLASSPATH  </span>
+6.  <span>export JAVA_PATH=${JAVA_HOME}/bin:${JRE_HOME}/bin  </span>
+7.  <span>export JAVA_HOME;  </span>
+8.  <span>export JRE_HOME;  </span>
+9.  <span>export CLASSPATH;  </span>
+10.  <span>HOME_BIN=~/bin/  </span>
+11.  <span>export PATH=${PATH}:${JAVA_PATH}:${JRE_PATH}:${HOME_BIN}; </span><span class="preprocessor"> </span> 
+12.  <span><span class="preprocessor"><span style="color: #808080;">#echo $PATH;</span></span><span> </span></span>
+</pre>
+
+<p>最后，同步这些变化： </p>
+<p><pre><br>    <li>source ~/.bashrc </li><br></pre><br><strong>3、安装repo（用来更新Android源码)</strong> </p>
+<p>创建~/bin目录，用来存放repo程序，如下： </p>
+<p><pre><br>    <li>$ cd ~  </li><br>    <li>$ mkdir bin </li><br></pre><br>并加到环境变量PATH中，在第2步中已经加入 </p>
+<p>下载repo脚本并使其可执行： </p>
+<p><pre><br>    <li>$ curl <a href="http://Android.git.kernel.org/repo" target="_blank" rel="external">http://Android.git.kernel.org/repo</a> <strong><span style="color: #006699;">&gt;</span></strong>~/bin/repo  </li><br>    <li>$ chmod a+x ~/bin/repo </li><br></pre><br><strong>4、下载 Android源码并更新之</strong> </p>
+<p>建议不要用repo来下载（Android源码超过1G，非常慢)，直接在网上下载<a href="http://www.Androidin.com/bbs/pub/cupcake.tar.gz。而且解压出来的" target="_blank" rel="external">http://www.Androidin.com/bbs/pub/cupcake.tar.gz。而且解压出来的</a> cupcake下也有.repo文件夹，可以通过repo sync来更新cupcake代码： </p>
+<p><pre><br>    <li>tar -xvf  cupcake.tar.gz  </li><br></pre><br>repo sync（更新很慢，用了3个小时) </p>
+<p><strong>5、编译Android源码,并得到~/project/Android/cupcake/out 目录</strong> </p>
+<p>进入Android源码目录： </p>
+<p>make </p>
+<p>这一过程很久（2个多小时) </p>
+<p><strong>6、在模拟器上运行编译好Android</strong> </p>
+<p>Android SDK的emulator程序在Android-sdk-linux_x86-1.0_r2/tools/下，emulator是需要加载一些image的，默认加载Android-sdk-linux_x86-1.0_r2/tools/lib/images下的kernel-qemu（内核) ramdisk.img  system.img  userdata.img </p>
+<p>编译好Android之后，emulator在~/project/Android/cupcake/out/host/linux-x86/bin下， ramdisk.img  system.img  userdata.img则在~/project/Android/cupcake/out/target/product/generic下 </p>
+<p>cd ~/project/Android/cupcake/out/host/linux-x86/bin </p>
+<p>增加环境变量 </p>
+<pre>
+
+<ol>
+<li><p><span><span>vim ~/.bashrc </span></span><br></p></li></ol></pre><br>在.bashrc中新增环境变量，如下 <p></p>
+<pre>
+
+<li><p><span><span>#java 程序开发/运行的一些环境变量  </span></span></p>
+</li>
+<li><span>export </span><span class="attribute"><span style="color: #ff0000;">Android_PRODUCT_OUT</span></span><span>=~/project/Android/cupcake2/out/target/product/generic  </span></li>
+<li><span> </span><span class="attribute"><span style="color: #ff0000;">Android_PRODUCT_OUT_BIN</span></span><span>=~/project/Android/cupcake2/out/host/linux-x86/bin  </span></li>
+<li><p><span>export </span><span class="attribute"><span style="color: #ff0000;">PATH</span></span><span>=${PATH}:${Android_PRODUCT_OUT_BIN}; </span><br></p></li></pre><br>最后，同步这些变化： <p></p>
+<pre>
+
+<li><p><span><span>source ~/.bashrc  </span></span></p>
+</li>
+<li><span>emulator -image system.img -data userdata.img -ramdisk ramdisk.img </span><br></li></pre><br>最后进入Android桌面，就说明成功了。 
+
+<p>out/host/linux-x86/bin下生成许多有用工具（包括Android SDK/tools的所有工具)，因此，可以把eclipse中Android SDK的路径指定到out/host/linux-x86/bin进行开发 </p>
+<p><strong>7、编译linux kernel</strong> </p>
+<p>直接make Android源码时，并没有make linux kernel。因此是在运行模拟器，所以不用编译 linux kernel。如果要移值Android，或增删驱动，则需要编译 linux kernellinux kernel的编译将在以后的文章中介绍。 </p>
+<p><strong>8、编译模块</strong>Android中的一个应用程序可以单独编译，编译后要重新生成system.img在源码目录下执行 </p>
+<pre>
+
+<ol>
+<li><p><span><span>. build/envsetup.sh （.后面有空格) </span></span><br></p></li></ol></pre><br>就多出一些命令： <p></p>
+<pre>
+
+<li><p><span><span>- croot:   Changes directory to the top of the tree.  </span></span></p>
+</li>
+<li><span>- m:       Makes from the top of the tree.  </span></li>
+<li><span>- mm:      Builds all of the modules in the current directory.  </span></li>
+<li><span>- mmm:     Builds all of the modules in the supplied directories.  </span></li>
+<li><span>- cgrep:   Greps on all local C/C++ files.  </span></li>
+<li><span>- jgrep:   Greps on all local Java files.  </span></li>
+<li><span>- resgrep: Greps on all local res/*.xml files.  </span></li>
+<li><p><span>- godir:   Go to the directory containing a file. </span><br></p></li></pre><br>可以加—help查看用法我们可以使用mmm来编译指定目录的模块，如编译联系人： <p></p>
+<pre>
+
+<li><p><span><span>mmm packages/apps/Contacts/ </span></span><br></p></li></pre><br>编完之后生成两个文件： <p></p>
+<pre>
+
+<li><p><span><span>out/target/product/generic/data/app/ContactsTests.apk  </span></span></p>
+</li>
+<li><span>out/target/product/generic/system/app/ Contacts.apk </span><br></li></pre><br>可以使用make snod重新生成system.img再运行模拟器 
+
+<p><strong>9、编译SDK</strong>直接执行make是不包括make sdk的。make sdk用来生成SDK，这样，我们就可以用与源码同步的SDK来开发 Android了。 </p>
+<p>1)修改/frameworks/base/include/utils/Asset.h‘UNCOMPRESS_DATA_MAX = 1 <em> 1024 </em> 1024’ 改为 ‘UNCOMPRESS_DATA_MAX = 2 <em> 1024 </em> 1024’原因是Eclipse编译工程需要大于1.3M的buffer </p>
+<p>2)编译ADT。注意，我们是先执行2)，再执行3)。因为在执行./build_server.sh时，会把生成的SDK清除了。用上了新的源码，adt这个调试工具也得自己来生成，步骤如下：进入cupcake源码的development/tools/eclipse/scripts目录，执行：export ECLIPSE_HOME=你的eclipse路径./build_server.sh 你想放ADT的路径 </p>
+<p>3)执行make sdk。注意，这里需要的javadoc版本为1.5，所以你需要在步骤1中同时安装sun-java5-jdkmake sdk编译很慢。编译后生成的SDK存放在out/host/linux-x86/sdk/，此目录下有Android-sdk_eng.xxx_linux-x86.zip和Android-sdk_eng.xxx_linux-x86目录。Android-sdk_eng.xxx_linux-x86就是SDK目录实际上，当用mmm命令编译模块时，一样会把SDK的输出文件清除，因此，最好把Android-sdk_eng.xxx_linux-x86移出来 </p>
+<p><strong>4)关于环境变量、Android工具的选择</strong>目前的Android工具有：A、我们从网上下载的SDK（ tools下有许多Android工具，lib/images下有img映像)B、我们用make sdk编译出来的SDK（ tools下也有许多Android工具，lib/images下有img映像)C、我们用make编译出来的out目录（ tools下也有许多Android工具，lib/images下有img映像)那么我们应该用那些工具和img呢？首先，我们不会用A选项的工具和img，因为一般来说它比较旧，也源码不同步。测试发现，如果使用B选项的工具和img，Android模拟器窗口变小（可能是skin加载不了)，而用C选项的工具和img则不会有此问题。有些Android工具依赖Android.jar（比如Android)，因此，我们在eclipse中使用B选项的工具（SDK)，使用C选项的img。其实，从emulator -help-build-images也可以看出，Android_PRODUCT_OUT是指向C选项的img目录的不过，除了用A选项的工具和img，用B或C的模拟器都不能加载sdcard，原因还不清楚。 </p>
+<p><strong>5)安装、配置ADT</strong>安装、配置ADT请参考官方文档 </p>
+<p>6)创建Android Virtual Device编译出来的SDK是没有AVD（Android Virtual Device)的，我们可以通过Android工具查看：Android list输出为： </p>
+<pre>
+
+<ol>
+<li><span><span>Available Android targets:  </span></span></li>
+<li><span>[1] Android 1.5  </span></li>
+<li><span>     API level: 3  </span></li>
+<li><span>     Skins: HVGA-P, QVGA-L, HVGA-L, HVGA (default), QVGA-P  </span></li>
+<li><span>Available Android Virtual Devices: </span><br></li></ol></pre><br>表明没有AVD。如果没有AVD，eclipse编译工程时会出错（Failed to find a AVD compatible with target ‘Android 1.5’. Launch aborted.)创建AVD：Android create avd -t 1 -c ~/sdcard.img -n myavd可以Android –help来查看上面命令选项的用法。创建中有一些选项，默认就行了再执行Android list，可以看到AVD存放的位置以后每次运行emulator都要加-avd myavd或@myavd选项，这里eclipse才会在你打开的emulator中调试程序 
+
+<p><strong>注意：</strong>这样，SDK和ADT就生成了，就按照官方文档把他们整合到Eclipse，这里不再细说了。建个Android的新工程，试试你自己编译的sdk。 </p>
+<p></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动开发/">移动开发</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2010/04/27/androidsource/" data-title="ubuntu9.10下编译Android源代码 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2010/04/28/sourceread/" title="linux源代码阅读">
+  <strong>上一篇：</strong><br/>
+  <span>
+  linux源代码阅读</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2010/03/03/dalvik-ten/"  title="Dalvik 十件事">
+ <strong>下一篇：</strong><br/> 
+ <span>Dalvik 十件事
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

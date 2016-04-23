@@ -1,0 +1,551 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Nutch1.0导入Eclipse中配置运行 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="&amp;lt;1&amp;gt;: 首先从http://nutch.apache.org/  下载最新的nutch.在这里我使用的是nutch1.0。
+&amp;lt;2&amp;gt;: 在eclipse中新建立一个Java Project. 名字自己定义(Nutch). 选择”Create project from existing source”，指向自己nutch-1.0的目录.
+&amp;lt;3&amp;gt;: 点击下一步，切换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nutch1.0导入Eclipse中配置运行">
+<meta property="og:url" content="http://www.liulang.cq.cn/2010/12/02/nutch-eclipse/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="&amp;lt;1&amp;gt;: 首先从http://nutch.apache.org/  下载最新的nutch.在这里我使用的是nutch1.0。
+&amp;lt;2&amp;gt;: 在eclipse中新建立一个Java Project. 名字自己定义(Nutch). 选择”Create project from existing source”，指向自己nutch-1.0的目录.
+&amp;lt;3&amp;gt;: 点击下一步，切换">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nutch1.0导入Eclipse中配置运行">
+<meta name="twitter:description" content="&amp;lt;1&amp;gt;: 首先从http://nutch.apache.org/  下载最新的nutch.在这里我使用的是nutch1.0。
+&amp;lt;2&amp;gt;: 在eclipse中新建立一个Java Project. 名字自己定义(Nutch). 选择”Create project from existing source”，指向自己nutch-1.0的目录.
+&amp;lt;3&amp;gt;: 点击下一步，切换">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2010/12/02/nutch-eclipse/" title="Nutch1.0导入Eclipse中配置运行" itemprop="url">Nutch1.0导入Eclipse中配置运行</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2010-12-02T14:25:47.000Z" itemprop="datePublished"> 发表于 2010-12-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#accept-hosts-in-MY-DOMAIN-NAME"><span class="toc-number">1.</span> <span class="toc-text">accept hosts in MY.DOMAIN.NAME</span></a></li></ol>
+		
+		</div>
+		
+		<p>&lt;1&gt;: 首先从<a href="http://nutch.apache.org/" target="_blank" rel="external">http://nutch.apache.org/</a>  下载最新的nutch.在这里我使用的是nutch1.0。</p>
+<p>&lt;2&gt;: 在eclipse中新建立一个Java Project. 名字自己定义(Nutch). 选择”Create project from existing source”，指向自己nutch-1.0的目录.</p>
+<p>&lt;3&gt;: 点击下一步，切换到”Libraries”选择”Add Class Folder…” 按钮，从列表中选择”conf”.  —- Add project ‘conf’ to build path—-&gt;Default Output floder —-&gt;选择刚才conf.</p>
+<p><a id="more"></a>&lt;4&gt;: finised.修改conf下面的</p>
+<p>(a):nutch-defaul.xml :</p>
+<p>&lt;!– plugin properties –&gt;</p>
+<p>&lt;property&gt;</p>
+<p>&lt;name&gt;plugin.folders&lt;/name&gt;</p>
+<p>&lt;value&gt;/home/user/tools/nutch-1.0/src/plugin&lt;/value&gt;</p>
+<p>&lt;!–指向nutch1.0目录的plugin–&gt;</p>
+<p>&lt;description&gt;Directories where nutch plugins are located.  Each   element may be a relative or absolute path.  If absolute, it is used   as is.  If relative, it is searched for on the classpath.&lt;/description&gt;</p>
+<p>&lt;/property&gt;</p>
+<p>(b):nutch-site.xml:</p>
+<p>&lt;property&gt;</p>
+<p>&lt;name&gt;http.agent.name&lt;/name&gt;</p>
+<p>&lt;value&gt;lance&lt;/value&gt;</p>
+<p>&lt;description&gt;lance&lt;/description&gt;</p>
+<p>&lt;/property&gt;</p>
+<p>&lt;property&gt;</p>
+<p>&lt;name&gt;http.agent.description&lt;/name&gt;</p>
+<p>&lt;value&gt;Nutch spiderman&lt;/value&gt;</p>
+<p>&lt;description&gt; Nutch spiderman&lt;/description&gt;</p>
+<p>&lt;/property&gt;</p>
+<p>&lt;property&gt;</p>
+<p>&lt;name&gt;http.agent.url&lt;/name&gt;</p>
+<p>&lt;value&gt;<a href="http://www.163.com/&lt;/value&amp;gt" target="_blank" rel="external">http://www.163.com/&lt;/value&amp;gt</a>;</p>
+<p>&lt;description&gt;<a href="http://www.163.com&lt;/description&amp;gt" target="_blank" rel="external">http://www.163.com&lt;/description&amp;gt</a>;</p>
+<p>&lt;/property&gt;</p>
+<p>&lt;property&gt;</p>
+<p>&lt;name&gt;http.agent.email&lt;/name&gt;</p>
+<p>&lt;value&gt;cqllang@163.com&lt;/value&gt;</p>
+<p>&lt;description&gt;cqllang@163.com   &lt;/description&gt;</p>
+<p>&lt;/property&gt;</p>
+<p>(c):crawl-urlfilter.txt:</p>
+<h1 id="accept-hosts-in-MY-DOMAIN-NAME"><a href="#accept-hosts-in-MY-DOMAIN-NAME" class="headerlink" title="accept hosts in MY.DOMAIN.NAME"></a>accept hosts in MY.DOMAIN.NAME</h1><p>+^<a href="http://([a-z0-9]*\.)*163.com/" target="_blank" rel="external">http://([a-z0-9]*\.)*163.com/</a></p>
+<p>&lt;5&gt;:下载MP3跟rtf的jar文件</p>
+<p><a href="http://nutch.cvs.sourceforge.net/nutch/nutch/src/plugin/parse-mp3/lib/" target="_blank" rel="external">http://nutch.cvs.sourceforge.net/nutch/nutch/src/plugin/parse-mp3/lib/</a>，</p>
+<p><a href="http://nutch.cvs.sourceforge.net/nutch/nutch/src/plugin/parse-rtf/lib/" target="_blank" rel="external">http://nutch.cvs.sourceforge.net/nutch/nutch/src/plugin/parse-rtf/lib/</a></p>
+<p>分别拷贝到src/plugin/parse-mp3/lib 和 src/plugin/parse-rtf/lib/文件夹下</p>
+<p>&lt;6&gt;:刷新几下，右键选择工程文件夹，选择Build Path-&gt;Configure Build Path…在弹出的窗口上，切换到Libraries，选择Add Jars…，添加刚才下载的jar文件到工程。</p>
+<p>&lt;7&gt;:到这一步，一般的工程都会有两个错误，nutch的official 1.0 release版本中，这两个问题因为licensing issues没有修复。</p>
+<p>接下来的就是最关键的部分了。</p>
+<p>修改—-  src\plugin\parse-rtf\src\java\org\apache\nutch\parse\rtf下RTFParseFactory.java</p>
+<p>添加—– import org.apache.nutch.parse.ParseResult;</p>
+<p>将  —– public Parse getParse(Content content) {</p>
+<p>改为—- public ParseResult getParse(Content content) {</p>
+<p>将  —- return new ParseStatus(ParseStatus.FAILED,</p>
+<p>ParseStatus.FAILED_EXCEPTION,</p>
+<p>e.toString()).getEmptyParse(conf);</p>
+<p>改为—–return new ParseStatus(ParseStatus.FAILED,</p>
+<p>ParseStatus.FAILED_EXCEPTION,</p>
+<p>e.toString()).getEmptyParseResult(content.getUrl(), getConf());</p>
+<p>将——return new ParseImpl(text,</p>
+<p>new ParseData(ParseStatus.STATUS_SUCCESS,</p>
+<p>title,</p>
+<p>OutlinkExtractor.getOutlinks(text, this.conf),</p>
+<p>content.getMetadata(),</p>
+<p>metadata));</p>
+<p>改为——return ParseResult.createParseResult(content.getUrl(),</p>
+<p>new ParseImpl(text,</p>
+<p>new ParseData(ParseStatus.STATUS_SUCCESS,</p>
+<p>title,</p>
+<p>OutlinkExtractor.getOutlinks(text, this.conf),</p>
+<p>content.getMetadata(),</p>
+<p>metadata)));</p>
+<p>修改——src\plugin\parse-rtf\src\test\org\apache\nutch\parse\rtf下的TestRTFParser.java</p>
+<p>将—–parse = new ParseUtil(conf).parseByExtensionId(“parse-rtf”, content);</p>
+<p>改为—-parse = new ParseUtil(conf).parseByExtensionId(“parse-rtf”, content).get(urlString); 到这一步，eclipse上面的工程就会没有错误了 .</p>
+<p>&lt;8&gt;:在nutch1.0的目录下新建立一个文件夹urls,然后再在urls中建立一个文本文件url. 写上链接。注意后面要有 “/“. 选择Run-&gt;Run As-&gt;Java Application在弹出的Select Java Application上选择Crawl-org.apache.nutch.crawl. 接下来，选择 Run-&gt;Run Configurations…在左边的Java Application下面会有Crawl这一项，选择它， 切换到Arguments，Program Arguments的内容就是要设置的参数，填上urls -dir crawl -depth 3 -topN 50（这里视自己的具体情况而定，urls为链接） 在VM arguments下面填上-Dhadoop.log.dir=logs -Dhadoop.log.file=hadoop.log.</p>
+<p>&lt;9&gt;:直接运行吧：看在你的控制台上出现信息了没.</p>
+<p>PS:可能碰到的问题，就是Java Heap Size的问题，查看logs/hadoop.log或控制台输出，如果出现类似java.lang.OutOfMemoryError: Java heap space语句，</p>
+<p>可以设置Eclipse -&gt; Window -&gt; Preferences -&gt; Java -&gt; Installed JREs -&gt; edit -&gt; Default VM arguments</p>
+<p>设置为-Xms5m Xmx250m，其中Xms为最小内存，Xmx为最大内存。</p>
+<p>另外我还碰到http.agent.name为null的错误。</p>
+<p>将hadoop-site.xml 改成nutch-site.xml一样内容并删除crawl文件夹重新运行。</p>
+<div><span style="font-family: 'Lucida Grande', Verdana, Arial, 'Bitstream Vera Sans', sans-serif;"><span style="white-space: pre-wrap;"><br></span></span></div>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/搜索引擎/">搜索引擎</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2010/12/02/nutch-eclipse/" data-title="Nutch1.0导入Eclipse中配置运行 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2010/12/18/android-2-1-eclair-for-htc-g1/" title="编译 android 2.1 (eclair) 源码 For HTC G1">
+  <strong>上一篇：</strong><br/>
+  <span>
+  编译 android 2.1 (eclair) 源码 For HTC G1</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2010/06/10/20movie/"  title="电影有时候不仅仅是娱乐，哈佛商学院和斯坦福要求学生必看的20部电影（当然你可以选择不看，没有人逼迫只有梦想只有天真和勇气的你）">
+ <strong>下一篇：</strong><br/> 
+ <span>电影有时候不仅仅是娱乐，哈佛商学院和斯坦福要求学生必看的20部电影（当然你可以选择不看，没有人逼迫只有梦想只有天真和勇气的你）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#accept-hosts-in-MY-DOMAIN-NAME"><span class="toc-number">1.</span> <span class="toc-text">accept hosts in MY.DOMAIN.NAME</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

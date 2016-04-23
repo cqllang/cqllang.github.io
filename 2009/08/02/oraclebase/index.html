@@ -1,0 +1,481 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Oracle基础复习 | LiuLang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Lance Alex">
+    
+
+    
+    <meta name="description" content="1.启动isqlplus：isqlplusctl start2.控制台：http://localhost:1158/emOracle物理结构：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle基础复习">
+<meta property="og:url" content="http://www.liulang.cq.cn/2009/08/02/oraclebase/index.html">
+<meta property="og:site_name" content="LiuLang's Blog">
+<meta property="og:description" content="1.启动isqlplus：isqlplusctl start2.控制台：http://localhost:1158/emOracle物理结构：">
+<meta property="og:updated_time" content="2016-04-18T14:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle基础复习">
+<meta name="twitter:description" content="1.启动isqlplus：isqlplusctl start2.控制台：http://localhost:1158/emOracle物理结构：">
+
+    
+    <link rel="alternative" href="/atom.xml" title="LiuLang&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="LiuLang&#39;s Blog">LiuLang&#39;s Blog</a></h1>
+				<h2 class="blog-motto">既然选择了远方，便只顾风雨兼程……</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:www.liulang.cq.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2009/08/02/oraclebase/" title="Oracle基础复习" itemprop="url">Oracle基础复习</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Lance Alex" target="_blank" itemprop="author">Lance Alex</a>
+		
+  <p class="article-time">
+    <time datetime="2009-08-02T08:30:01.000Z" itemprop="datePublished"> 发表于 2009-08-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p><span style="color: #000080;">1.启动isqlplus：isqlplusctl start<br>2.控制台：<a href="http://localhost:1158/em" target="_blank" rel="external">http://localhost:1158/em</a><br>Oracle物理结构：</span></p>
+<p><span style="color: #000080;"><a id="more"></a><br>3.数据库test:包含<em>.log日志文件，</em>.ctl控制文件，和<em>.dbf数据文件，先启动控制文件，然后打开数据文件<br>4.日志文件：重做日志文件，归档日志文件<br>5.sqlplus “sys/test as sysdba”<br>6.查看控制文件：DESC v$controlfile<br>select status,name from v$controlfile<br>7.查看数据文件：DESC v$datafile<br>8.查看日志文件：DESC v$logfile<br>9.参数文件：控制文件是由参数文件来查找的，文件位置10.2.0\db_1\database\</em>.ora<br>Oracle内存结构<br>10.SGA:DB buffer,Redo buffer,固定SGA,大共享区,共享池<br>Oracle逻辑结构<br>11.块（block）盘区（extent）段（segment）表空间（tablespace）数据文件（datafile）<br>一个表空间对应多个段<br>一个表空间对应多个数据段<br>但是一个段可以跨越多个数据文件<br>一个段包括多个盘区<br>一个盘区包括多个块<br>块是最小单位 </span></p>
+<p><span style="color: #000080;">SQLPLUS基础<br>1.sqlplus “sys/test as sysdba”<br>sqlplus scott/tiger<br>2.如果实例没有打开<br>sqlplus/nolog<br>connect sys/test as sysdba<br>startup （先启动实例，然后启动控制文件）<br>3.<br>shutdown 正常关闭<br>shutdown immediate 执行完当前sql语句后关闭（最常用）<br>shutdown transactional 执行完当前事务后关闭<br>shutdown abort 强行关闭数据库<br>4.启动isqlplus<br><a href="http://localhost:5560/isqlplus" target="_blank" rel="external">http://localhost:5560/isqlplus</a><br>不能以sys登录，因为sys登录一定要用sysdba身份<br>select <em> from books<br>select </em> from dept<br>5.help index：显示所有oracle支持的命令<br>? 命令名 可以查看帮助<br>6.SET SQLBLANKLINES ON 设置sql语句中可以使用空行<br>7.select <em> from dept where deptno=$tt<br>设置替代变量值，使用这种方法，只安排一个执行计划<br>8.list 可以查看缓冲区中的命令<br>l：list 的所写<br>l3查看第三行<br>9.change：改变缓冲区中的的命令<br>c:change的简写<br>c/要替换的地方/正确的内容<br>10.缓冲区里的命令使用/来执行<br>11.del 删除缓冲区中的命令<br>del 4删除第4行<br>del 2 4删除2到4行<br>12.保存缓冲区中的内容：save c:\test\<br>13.执行文件 @c:\test\test.txt<br>14.取得文件内容：get c:\test\test.txt<br>15.edit 会打开记事本<br>16.执行缓冲区命令用：/<br>17.column 缩写 col<br>18.列出当前用户下的所有表：select </em> from tab;<br>19.show all：显示所有报表命令<br>20.查看当前用户：select user from dual<br>21.<br>sqlplus /nolog<br>conn sys/oldpassword@ibmrfid as sysdba<br>alter user system identified by newpassword 修改密码<br>SQL语言基础<br>1.DDL：create alter drop<br>DCL：grant revoke<br>DML：select insert delete update<br>2.alter table test add c number;<br>3.grant select on dept to tt;<br>4.revoke select on dept from tt;<br>5.update abc set b=’ttt’ where a=’abc’;<br>6.delete from abc where a=’abc’;<br>7.select sysdate from dual;<br>select current_date from dual;<br>8.TO_DATE TO_CHAR TO_NUMBER<br>9.聚集函数：sum avg max min count<br>10.select user from dual;<br>11.select sum(decode(sex,’男’,1,0)) 男人数,sum(decode(sex,’女’,1,0)) 女人数 from e;<br>12.select a1,nvl(a2,’为输入’) a2 from aa;<br>13.select distinct a1 from aa;不先是重复语句<br>14.create view myview as select <em> from dept;<br>15.序列是数据库中提供顺序生成的整数的对象，通常序列是由DBA创建和命名的。创建序列时可以定义的属性有最大值，最小值，增量和初始数。<br>16.select </em> from aa where a1 like ‘a%’;<br>17.内连接标准写法：select a.id,a.name,b.dept from test1 a join test2 b on a.id=b.id;<br>18.左外连接：左边的无条件显示出来，右面的有匹配的就显示，没有匹配的用空值。<br>19.无关子查询：select <em> from e where id in (select id from d);<br>相关子查询：select </em> from e where id in (select id from d where id=e.id);<br>20.union合并 重复的数据只显示一条 </span></p>
+<p><span style="color: #000080;">安全管理<br>1.select user from dual;查看当前用户<br>2.grant select on scott.dept to test;<br>3.修改默认表空间：alter user table default tablespace users;<br>4.修改密码：alter user test identified by test1234;<br>5.锁定帐号：alter user test account lock;<br>alter user test account unlock;<br>6.创建用户：create user qqq identified by qqq123<br>default tablespace NEW_TS;<br>7.赋予connect权限： grant connect to qqq;<br>8.切换用户：conn /  as sysdba;<br>9.允许用户授权给他人：grant select on scott.dept to test with grant option<br>10.grant all on scott.dept to test with grant option;<br>11.删除用户：drop user test;<br>12.系统授权：grant create user to test with admin option;<br>13.创建角色：create role myrole;<br>14.给用户分配角色：grant myrole to test； </span></p>
+<p><span style="color: #000080;">表空间管理<br>1.create tablespace tabs datafile<br>‘c:\oracle\product\10.1.0\oradata\test\tabs.dbf’<br>size 10m;<br>alter user test default tablespace tabs;<br>grant unlimited tablespace, dba to test; </span></p>
+<p><span style="color: #000080;">表管理<br>1.语法方式启动listener：lsnrctl status<br>lsnrctl start listener<br>2.完整性：实体完整性，参照完整性，域完整性<br>3.实体完整性：记录的唯一性，通过主键来保证<br>4.参照完整性：关联表中相关记录的完整性，通过外键来保证<br>5.check约束：alter table emp add constraint ck_emp_sex check(sex=’男’ or sex=’’女”);<br>6.查看表的约束：desc all_constraints,desc user_constraints,desc dba_constraints<br>7.如果不建索引，数据是按照堆来存放<br>8.create index 索引名 on 表名（列名）；<br>select * from 表名 where 列名=”abc”;<br>9.位图索引，值很单一，例如只有男女两种<br>create bitmap index bit_m on emp(sex); </span></p>
+<p><span style="color: #000080;">视图·同义词·序列<br>1.视图：是一条存储起来的select语句<br>2.CREATE OR REPLACE VIEW myview AS SELECT <em> FROM books;<br>3.对视图操作就是对表操作<br>INSERT INTO myview VALUES(‘0009’,’EBOOK’);<br>4.为视图加上限制条件<br>CREATE OR REPLACE VIEW myview AS SELECT </em> FROM books<br>where price&gt;30 with check option<br>5. desc dba_views<br>desc user_views<br>desc all_views<br>6.select user from dual; 查看当前用户<br>7.同义词：有两种同义词，一种是公共的，需要dba来创建，一种是私有的<br>8.create synonym dept for scott.dept;<br>create public synonym dept for scott.dept;<br>9.desc dba_synonyms<br>10.create sequence myseq<br>start with 1<br>increment by 1<br>order<br>nocycle（会影响效率）;<br>11.select myseq.nextval from dual;<br>select myseq.currval from dual 查询当前序列值<br>12.insert into auto values(myseq.nextval,<br>13.desc dba_sequences;<br>desc all_sequeneces;<br>desc user_sequeneces; </span></p>
+<p><span style="color: #000080;">备份与恢复<br>1.逻辑备份，物理备份<br>2.逻辑备份：使用exp进行逻辑备份，然后使用imp进行逻辑恢复<br>导出文件为转储文件，结尾为dmp<br>3.exp scott/tiger@test<br>imp scott/tiger<br>4.物理备份：冷备份（脱机备份）热备份（联机备份）<br>5.冷备份：shutdown immediate<br>oradata目录下的所有文件<br>6.热备份：一定要将日志至于归档方式，查询命令：<br>archive log list;<br>日志文件在oradata/test下，联机重做日志，不归档<br>alter system set log_archive_start=true scope=spfile;（禁用改成启用）<br>shutdown immediate;<br>startup mount;(打开控制文件，但不打开数据文件）<br>alter database archivelog;（改成归档方式）<br>alter database open;<br>archive log list;(再次查看，启动归档方式，而且为自动归档)<br>alter tablespace users begin backup;(被备份的表空间被放在备份模式中)<br>手动拷贝<br>alter tablespace users end backup;<br>alter system archive log current;（确认所有在备份操作期间被建立的日志记录在随后已经被归档）<br>alter system switch logfile;<br>手动备份<br>select * from v$recover_file;查看文件是否丢失<br>alter database datafile 6 offline drop;（假设6号dbf文件丢失，使6号脱机，然后手动拷贝文件）<br>recover datafile 6;<br>alter database datafile 6 online<br>7.控制文件丢失：备份路径admin/test/udump/时间离的最近的一个<br>8.日志文件丢失：recover database until cancel;<br>alter database open resetlogs;<br>9.改为非归档方式：alter database noarchivelog; </span></p>
+<p><span style="color: #000080;">备份与恢复2<br>1.Oracle中可执行三种基本的备份和恢复操作：<br>物理备份和恢复：所有的数据据文件被备份到一起，通常成为热备份或冷备份<br>逻辑备份和恢复：同学选择命名表，目录甚至模式之类的特定逻辑数据库结构来进行<br>Recovery Manager(RMAN)：<br>2.应该进行备份的文件包括参数，控制，撤销，归档日志，数据，联机重做，转储和跟踪文件<br>3.init.ora参数文件以及可执行的服务器参数文件（spfile）含有一个一旦实例被启动，实例将如何进行操作的指令列表。<br>4.alter database backup controlfile to trace  –text backup<br>alter database backup controlfile to ‘/directory/file’;  –binary backup<br>5.Oracle Data Pump使用命令expdp impdp<br>查看expdp帮助 expdp help=y<br>Oracle数据库基础<br>1.实例：是运行在计算机内存中的一组进程，并给多个文件提供访问，这些文件统称Oracle Database 10g。<br>2.后台进程：支持对已经启动的Oracle的访问，启动数据库时会产生多种后台进程，每个进程执行几个任务直至数据库关闭。<br>3.表空间：Oracle对数据库文件的称呼，可以看作表驻留的空间。默认的表空间有system,sysaut,临时表空间，undo表空间<br>4.后台进程：dbwr：数据库写入<br>lgwr：日志写入<br>ckpt：检查点<br>smon：系统监视<br>pmon：进程监视<br>cjq0：作业队列协调<br>arc0：归档<br>5.Oracle基本数据类型<br>varchar2：最大长度4000字节，末尾不带无意义的空格。<br>数字：存储非整数的时候，小数点左边的部分称为精度，右边的部分称为刻度（scale）。最大精度是38，最大刻度是127。<br>日期：抽取日期字段时执行很多函数<br>时间戳：不需要to_char函数就可以随数据显示<br>clob：允许4g大小的对象，只是存储字母数字数据<br>blob：二进制对象<br>6.存储对象：Oracle提供在数据字典中存储用户定义的程序单元的能力，这些程序单元是用PL/SQL编写的。<br>7.触发器：是基于某种时间进行触发的存储对象。触发器不能脱离表而存在，表删除了，触发器也会被删除。触发器也是用PL/SQL编写的。<br>8.过程和函数的区别：过程调用时可以接受零个或者多个参数，并在代码片段结束前执行其任务。另一方面，函数在调用时接受零个或者多个参数，并在调用时返回给代码调用位置一个值，过程不向其调用者返回任何内容。<br>9.包：可以混合第包含一个或者多个函数或过程。<br>10.show all显示所有报表命令 </span></p>
+<p><span style="color: #000080;">SQL：结构化查询<br>1.DDL(Data Definition Language)数据定义语言<br>DML(Date Manipulation Language)数据操纵语言<br>2.DDL:create alter drop grant<br>truncate从表中删除所有行<br>revoke删除一个用户或角色的权限<br>analyze为基于代价的优化程序收集数据库对象的性能统计<br>describe 缩写为desc<br>3.DML:select insert update delete<br>4.where后面可以接and,or,!=,where可以与select,update,delete一起用，如果update，delete没有加where，将会更新所有记录。<br>5.rollback；可以回滚<br>6.update set where<br>7.连接分ANSI连接和Oracle连接两种，ANSI连接即带join,on,using连接词。<br>8.内部连接：也简称为连接，当要从两个表中选取记录时，如果第一个表中的某一列的值也有可能在第二个表中的相同列中找到，就称为两个表内部连接。<br>9.外部连接：内部连接是要返回在两个表中特定列的值匹配的记录，外部连接的返回结果是从一个表中找出对应于另一个表，没有匹配值的记录。<br>Oracle用符号（+）表示，（+）用于where子句中要返回无匹配行的表。<br>10.group by分组 having限制返回的组<br>11.create view as select * from dept; </span></p>
+<p><span style="color: #000080;">数据库管理员<br>1.DBA日常操作：体系结构和设计 容量规划 备份和恢复 安全 性能和调整 管理数据库对象 存储管理 变化管理 调度任务 网络管理 排错<br>2.用客户端的sqlplus连接其他机器<br>sqlplus /nolog<br>conn sys/orcl@orcl as sysdba<br>3.OEM：Oracle Enterprise Manager<br>联网<br>1.监听器进程必须运行在数据库服务器上<br>2.数据库默认的字符集是US7ASCII<br>3.TNS：Transparent Network Substrate 是所有行于标准协议之间的通用接口。<br>4.Java两种链接方式：OCI Thin<br>5.JDBC OCI驱动程序需要远程平台和数据库服务器上驻留Oracle Net.<br>完全使用Java编写的JDBC Thin驱动程序使用JavaNet进行通信，只要求在服务器平台上驻留Oracle Net.<br>6.专用服务器和共享服务器的区别：专用服务器为每个用户进程使用一个“专用的”服务器进程。共享服务器体系结构为大量的用户提供增加的可扩展性。因为一个服务器进程能够在许多用户进程中被“共享”。<br>7.重设oem：<br>emctl start dbconsole<br>emctl stop dbconsole<br>set ORACLE_SID<br>emca -config dbcontrol db<br>8.Database Configuration Assistant (dbca)<br>9.授权可指定的四项内容：<br>被授权的用户<br>被准许的对象，例如表，过程或者角色<br>被准许的访问类型：如表的选择，插入，更新，或者删除，或者过程，函数或包的执行<br>该用户是否有权将相同权利授予其他用户，默认，不能，但可以通过使用with grant选项来增加此权利<br>10.准许的类型<br>系统权限和对象权限<br>系统权限是与定义的Oracle权限，针对所有系统对象而不是单个对象授权<br>对象权限是将命名对象授予一个用户的低级权利，因此，在特定的表上执行操作，或执行单个函数，包或过程的能力是对象权限。<br>11.创建重要对象：<br>创建表空间new_ts,设置表空间大小<br>创建用户new_user，设置默认表空间为new_ts<br>创建角色new_role，将create table,olap_user,select对象的权限赋予new_role<br>给new_user赋予new_role的角色，并设置在new_ts上有无限的配额<br>12.init.ora中设置了分派程序<br>13.Oracle Connection Manager：可以在命令行中输入cmctl<br>14.Oracle Net Listener：可以在命令行中输入lsnrctl，配置文件为listener.ora<br>15.命名方法：目录命名（集中配置），本地命名（客户配置），外部命名（外部配置），简单命名（手工配置）<br>16.本地命名方法：tnsnames.ora<br>17.sqlnet.ora：文件驻留在数据库服务器和本地平台上，配置文件信息被保存在sqlnet.ora文件中。该文件定义了有关服务名称，命名方法，外部命名信息，advanced security参数和数据库访问信息等方面的信息，TNS_ADMIN环境变量能够覆盖默认配置。</span></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.liulang.cq.cn/2009/08/02/oraclebase/" data-title="Oracle基础复习 | LiuLang&#39;s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2009/08/02/linuxcmd/" title="常用linux命令">
+  <strong>上一篇：</strong><br/>
+  <span>
+  常用linux命令</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2009/08/02/tiwenzhihui/"  title="提问的智慧">
+ <strong>下一篇：</strong><br/> 
+ <span>提问的智慧
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="cqllang" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/搜索引擎/" title="搜索引擎">搜索引擎<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/移动开发/" title="移动开发">移动开发<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/项目管理/" title="项目管理">项目管理<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gold.xitu.io/" target="_blank" title="分享优质的技术干货">稀土掘金</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.infoq.com/cn/" target="_blank" title="促进软件开发领域知识与创新的传播">InfoQ</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.wooyun.org/" target="_blank" title="自由平等开放的漏洞报告平台">WooYun.org</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> 浮云一别后，流水十年间 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1929901647" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/cqllang" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/lance-alex" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:cqllang@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Lance Alex">Lance Alex</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258770601'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1258770601' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
