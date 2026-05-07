@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+:root {
+    --primary-color: #d92121;
+    --primary-dark: #b81c1c;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --border-radius: 15px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    background: linear-gradient(180deg, #fff5f5 0%, #ffe4e4 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 封面样式 */
+.cover {
+    background: linear-gradient(135deg, #d92121 0%, #b81c1c 100%);
+    color: #fff;
+    text-align: center;
+    padding: 60px 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+}
+
+.cover h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* 文案样式 */
+.content {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    line-height: 1.9;
+    box-shadow: var(--shadow);
+}
+
+.content p {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    text-indent: 2em;
+}
+
+.content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 信息样式 */
+.info {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-item:first-child {
+    padding-top: 0;
+}
+
+.icon {
+    font-size: 22px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.value {
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.value.phone-link {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.value.phone-link:hover {
+    text-decoration: underline;
+}
+
+#timeItem:hover,
+#addressItem:hover {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#timeItem,
+#addressItem {
+    transition: background-color 0.2s ease;
+}
+
+/* 地图导航样式 */
+.map-box {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.map-box h2 {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#navBtn {
+    width: 100%;
+    padding: 16px 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 33, 33, 0.3);
+    transition: transform 0.2s ease;
+}
+
+#navBtn:active {
+    transform: scale(0.98);
+}
+
+#navBtn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* 结尾样式 */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-light);
+}
+
+.footer p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.inviter {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+/* 适配小屏手机 */
+@media (max-width: 375px) {
+    body {
+        padding: 15px;
+    }
+
+    .cover {
+        padding: 50px 20px;
+    }
+
+    .cover h1 {
+        font-size: 26px;
+    }
+
+    .content, .info, .map-box {
+        padding: 25px 20px;
+    }
+}

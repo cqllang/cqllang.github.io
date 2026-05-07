@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#d92121">
+    <meta name="description" content="四十不惑生日宴会邀请函">
+    <title>四十不惑 · 生日邀请函</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面页 -->
+        <section class="cover">
+            <h1>四十不惑 · 感恩相伴</h1>
+            <p class="subtitle">诚邀您莅临我的生辰宴</p>
+        </section>
+
+        <!-- 邀请文案 -->
+        <section class="content">
+            <p>时光匆匆，转眼步入四十不惑之年。</p>
+            <p>感恩一路走来，有亲人的牵挂、朋友的陪伴与扶持，风雨同行，情谊珍贵。</p>
+            <p>特此备下薄宴，略备薄酒小菜，诚邀各位亲朋好友，携家人欢聚一堂，闲话家常，共叙情谊，共贺生辰。</p>
+        </section>
+
+        <!-- 宴会信息 -->
+        <section class="info">
+            <div class="info-item" id="timeItem">
+                <span class="icon">📅</span>
+                <div class="info-text">
+                    <span class="label">宴会时间</span>
+                    <span class="value" id="eventTime">2026年5月30日 星期六 中午12:00</span>
+                </div>
+            </div>
+            <div class="info-item" id="addressItem">
+                <span class="icon">📍</span>
+                <div class="info-text">
+                    <span class="label">宴会地址</span>
+                    <span class="value" id="eventAddress">重庆市两江新区红盛路37号 重庆悦荟购物中心 L4 层 锦禧大酒楼</span>
+                </div>
+            </div>
+            <div class="info-item" id="phoneItem">
+                <span class="icon">📞</span>
+                <div class="info-text">
+                    <span class="label">联系电话</span>
+                    <a href="tel:18523105015" class="value phone-link">18523105015</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地图导航 -->
+        <section class="map-box">
+            <h2>一键导航到酒店</h2>
+            <button id="navBtn">点击导航</button>
+        </section>
+
+        <!-- 结尾致谢 -->
+        <section class="footer">
+            <p>半生岁月，感恩相逢</p>
+            <p class="inviter">刘浪 敬邀</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
